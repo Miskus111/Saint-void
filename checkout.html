@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -149,7 +150,7 @@
                 <div style="font-size:0.78rem;color:var(--white);font-weight:500;">Standard Shipping</div>
                 <div style="font-size:0.68rem;color:var(--silver-dark);margin-top:0.15rem;">5–8 business days</div>
               </div>
-              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">$12.00</span>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">€12.00</span>
             </label>
 
             <label style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;cursor:pointer;border-bottom:1px solid var(--border);transition:background 0.2s ease;" class="shipping-option">
@@ -158,7 +159,7 @@
                 <div style="font-size:0.78rem;color:var(--white);font-weight:500;">Express Shipping</div>
                 <div style="font-size:0.68rem;color:var(--silver-dark);margin-top:0.15rem;">2–3 business days</div>
               </div>
-              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">$28.00</span>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">€28.00</span>
             </label>
 
             <label style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;cursor:pointer;transition:background 0.2s ease;" class="shipping-option">
@@ -167,7 +168,7 @@
                 <div style="font-size:0.78rem;color:var(--white);font-weight:500;">Overnight Shipping</div>
                 <div style="font-size:0.68rem;color:var(--silver-dark);margin-top:0.15rem;">Next business day</div>
               </div>
-              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">$48.00</span>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">€48.00</span>
             </label>
           </div>
         </div>
@@ -249,7 +250,7 @@
 
         <!-- Place Order -->
         <button type="submit" class="btn btn-primary btn-full" style="height:56px;font-size:0.72rem;letter-spacing:0.25em;margin-top:0.5rem;">
-          Place Order — $360.00
+          Place Order — €152.00
         </button>
 
         <div class="checkout-secure">
@@ -291,7 +292,7 @@
               <div class="checkout-order-name">SAINT VOID Hoodie</div>
               <div class="checkout-order-meta">Size: M · Drop 01</div>
             </div>
-            <div class="checkout-order-price">$189.00</div>
+            <div class="checkout-order-price">€70.00</div>
           </div>
 
           <!-- Sweatpants -->
@@ -313,7 +314,7 @@
               <div class="checkout-order-name">SAINT VOID Sweatpants</div>
               <div class="checkout-order-meta">Size: M · Drop 01</div>
             </div>
-            <div class="checkout-order-price">$159.00</div>
+            <div class="checkout-order-price">€70.00</div>
           </div>
         </div>
 
@@ -327,11 +328,11 @@
         <div class="checkout-totals">
           <div class="checkout-total-line">
             <span class="checkout-total-label">Subtotal</span>
-            <span class="checkout-total-value">$348.00</span>
+            <span class="checkout-total-value">€140.00</span>
           </div>
           <div class="checkout-total-line">
             <span class="checkout-total-label">Shipping</span>
-            <span class="checkout-total-value">$12.00</span>
+            <span class="checkout-total-value">€12.00</span>
           </div>
           <div class="checkout-total-line">
             <span class="checkout-total-label">Tax</span>
@@ -341,7 +342,7 @@
 
         <div class="checkout-grand">
           <span class="checkout-grand-label">Total</span>
-          <span class="checkout-grand-value">$360.00</span>
+          <span class="checkout-grand-value">€152.00</span>
         </div>
 
         <!-- Trust badges -->
@@ -410,9 +411,9 @@ document.querySelectorAll('.shipping-option').forEach(opt => {
     const val = this.querySelector('input').value;
     const prices = { standard: 12, express: 28, overnight: 48 };
     const ship = prices[val] || 12;
-    document.querySelector('.checkout-grand-value').textContent = `$${(348 + ship).toFixed(2)}`;
-    document.querySelector('.checkout-total-value').textContent = `$${ship.toFixed(2)}`;
-    document.querySelector('[type="submit"]').textContent = `Place Order — $${(348 + ship).toFixed(2)}`;
+    document.querySelector('.checkout-grand-value').textContent = `€${(140 + ship).toFixed(2)}`;
+    document.querySelector('.checkout-total-value').textContent = `€${ship.toFixed(2)}`;
+    document.querySelector('[type="submit"]').textContent = `Place Order — €${(140 + ship).toFixed(2)}`;
   });
 });
 

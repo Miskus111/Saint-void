@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -55,7 +56,7 @@
       <div class="cart-items" id="cart-items">
 
         <!-- Item 1: Hoodie -->
-        <div class="cart-item" data-price="189">
+        <div class="cart-item" data-price="70">
           <a href="product-hoodie.html" class="cart-item-img" aria-label="SAINT VOID Hoodie">
             <!-- Hoodie mini visual -->
             <svg viewBox="0 0 100 133" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
@@ -74,7 +75,7 @@
             <div class="cart-item-name">SAINT VOID Hoodie</div>
             <div class="cart-item-meta">Size: M</div>
             <div class="cart-item-meta">Drop 01 — Heavyweight Fleece</div>
-            <div class="cart-item-price" style="margin-top:0.25rem;">$189.00</div>
+            <div class="cart-item-price" style="margin-top:0.25rem;">€70.00</div>
             <div class="cart-item-controls">
               <div class="cart-qty" aria-label="Quantity">
                 <button class="cart-qty-btn" data-action="minus" aria-label="Decrease">−</button>
@@ -87,7 +88,7 @@
         </div>
 
         <!-- Item 2: Sweatpants -->
-        <div class="cart-item" data-price="159">
+        <div class="cart-item" data-price="70">
           <a href="product-sweatpants.html" class="cart-item-img" aria-label="SAINT VOID Sweatpants">
             <!-- Sweatpants mini visual -->
             <svg viewBox="0 0 100 133" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
@@ -105,7 +106,7 @@
             <div class="cart-item-name">SAINT VOID Sweatpants</div>
             <div class="cart-item-meta">Size: M</div>
             <div class="cart-item-meta">Drop 01 — Heavyweight Cotton</div>
-            <div class="cart-item-price" style="margin-top:0.25rem;">$159.00</div>
+            <div class="cart-item-price" style="margin-top:0.25rem;">€70.00</div>
             <div class="cart-item-controls">
               <div class="cart-qty" aria-label="Quantity">
                 <button class="cart-qty-btn" data-action="minus" aria-label="Decrease">−</button>
@@ -134,7 +135,7 @@
 
         <div class="cart-summary-line">
           <span class="cart-summary-label">Subtotal</span>
-          <span class="cart-summary-value cart-subtotal-value">$348.00</span>
+          <span class="cart-summary-value cart-subtotal-value">€140.00</span>
         </div>
         <div class="cart-summary-line">
           <span class="cart-summary-label">Shipping</span>
@@ -153,7 +154,7 @@
 
         <div class="cart-summary-total">
           <span class="cart-total-label">Estimated Total</span>
-          <span class="cart-total-value">$348.00</span>
+          <span class="cart-total-value">€140.00</span>
         </div>
 
         <a href="checkout.html" class="btn btn-primary btn-full" style="margin-top:0.5rem;font-size:0.68rem;letter-spacing:0.2em;">
@@ -206,7 +207,7 @@
           <div class="product-card-tag">Heavyweight Fleece</div>
           <div class="product-card-name">SAINT VOID Hoodie</div>
           <div class="product-card-footer">
-            <span class="product-price">$189.00</span>
+            <span class="product-price">€70.00</span>
           </div>
           <div class="product-card-actions">
             <a href="product-hoodie.html" class="btn btn-outline" style="flex:1;">View Product</a>
@@ -231,7 +232,7 @@
           <div class="product-card-tag">Heavyweight Cotton</div>
           <div class="product-card-name">SAINT VOID Sweatpants</div>
           <div class="product-card-footer">
-            <span class="product-price">$159.00</span>
+            <span class="product-price">€70.00</span>
           </div>
           <div class="product-card-actions">
             <a href="product-sweatpants.html" class="btn btn-outline" style="flex:1;">View Product</a>
@@ -266,10 +267,10 @@ document.querySelector('.cart-discount-btn')?.addEventListener('click', function
       const subtotalEl = document.querySelector('.cart-subtotal-value');
       const totalEl = document.querySelector('.cart-total-value');
       if (subtotalEl) {
-        const current = parseFloat(subtotalEl.textContent.replace('$','')) || 348;
+        const current = parseFloat(subtotalEl.textContent.replace('€','')) || 140;
         const disc = (current * 0.9).toFixed(2);
-        subtotalEl.textContent = `$${disc}`;
-        if (totalEl) totalEl.textContent = `$${disc}`;
+        subtotalEl.textContent = `€${disc}`;
+        if (totalEl) totalEl.textContent = `€${disc}`;
         input.value = '✓ ' + val;
         input.disabled = true;
         this.textContent = 'Applied';
