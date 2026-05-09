@@ -336,10 +336,79 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(80,80,80,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(60,60,60,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(60,60,60,0.04) 0%, transparent 60%),
-    var(--black);
+    radial-gradient(ellipse 55% 45% at 50% 38%, rgba(35,35,35,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 25% at 50% 0%, rgba(20,20,20,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 30% at 50% 100%, rgba(3,3,3,0.95) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 35% at 15% 70%, rgba(12,12,12,0.4) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 85% 70%, rgba(12,12,12,0.4) 0%, transparent 55%),
+    #020202;
+}
+
+/* Atmospheric SVG layer */
+.hero-atmospheric {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+@keyframes fogDrift {
+  0%, 100% { transform: translateX(0) scaleX(1); opacity: 0.7; }
+  50% { transform: translateX(-20px) scaleX(1.03); opacity: 0.9; }
+}
+
+@keyframes fogDrift2 {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(18px); opacity: 0.8; }
+}
+
+@keyframes centralGlowPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.75; }
+}
+
+/* ================================================
+   BORN IN THE VOID SECTION
+   ================================================ */
+.void-born {
+  background: #010101;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 5rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.void-born::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(20,20,20,0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.void-born-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.void-born-text {
+  font-family: var(--heading);
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 2.1;
+  color: var(--silver-light);
+  margin-bottom: 2.5rem;
+}
+
+.void-born-cta {
+  letter-spacing: 0.3em;
+  font-size: 0.65rem;
 }
 
 /* Stars layer */
@@ -347,6 +416,7 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 1;
 }
 
 .hero-content {
@@ -375,19 +445,21 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
   letter-spacing: 0.02em;
   margin-bottom: 2rem;
   text-shadow:
-    0 0 80px rgba(255,255,255,0.04),
-    0 0 200px rgba(200,200,200,0.02);
+    0 0 40px rgba(255,255,255,0.08),
+    0 0 100px rgba(255,255,255,0.04),
+    0 0 200px rgba(200,200,200,0.03),
+    0 2px 4px rgba(0,0,0,0.8);
 }
 
 .hero-sub {
   font-family: var(--heading);
-  font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
   font-weight: 400;
-  letter-spacing: 0.18em;
-  color: var(--silver-light);
-  max-width: 520px;
+  letter-spacing: 0.2em;
+  color: var(--silver);
+  max-width: 560px;
   margin: 0 auto 3.5rem;
-  line-height: 2;
+  line-height: 2.2;
 }
 
 .hero-ctas {
