@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — SAINT VOID</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ================================================
+     CHECKOUT
+     ================================================ -->
+<main class="checkout-page">
+  <div class="checkout-layout">
+
+    <!-- ---- LEFT: Form Column ---- -->
+    <div class="checkout-form-col">
+      <a href="index.html" class="checkout-logo">saint void</a>
+
+      <!-- Steps indicator -->
+      <div class="checkout-steps" role="list" aria-label="Checkout steps">
+        <div class="checkout-step active" role="listitem">
+          <div class="checkout-step-num">1</div>
+          <span>Information</span>
+        </div>
+        <div class="checkout-step-sep" aria-hidden="true"></div>
+        <div class="checkout-step" role="listitem">
+          <div class="checkout-step-num">2</div>
+          <span>Shipping</span>
+        </div>
+        <div class="checkout-step-sep" aria-hidden="true"></div>
+        <div class="checkout-step" role="listitem">
+          <div class="checkout-step-num">3</div>
+          <span>Payment</span>
+        </div>
+      </div>
+
+      <form class="checkout-submit-form" novalidate>
+
+        <!-- Contact Information -->
+        <div class="checkout-section">
+          <div class="checkout-section-title">Contact Information</div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="your@email.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+            <input type="checkbox" id="marketing" name="marketing" style="accent-color:#fff;width:14px;height:14px;cursor:pointer;" />
+            <label for="marketing" style="font-size:0.72rem;color:var(--silver-dim);cursor:pointer;letter-spacing:0.03em;">
+              Keep me updated on new drops and exclusive releases
+            </label>
+          </div>
+        </div>
+
+        <!-- Shipping Information -->
+        <div class="checkout-section">
+          <div class="checkout-section-title">Shipping Address</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first_name" class="form-input" placeholder="First name" autocomplete="given-name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last_name" class="form-input" placeholder="Last name" autocomplete="family-name" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="company">Company (Optional)</label>
+            <input type="text" id="company" name="company" class="form-input" placeholder="Company name" autocomplete="organization" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="address1">Address</label>
+            <input type="text" id="address1" name="address1" class="form-input" placeholder="Street address" autocomplete="address-line1" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="address2">Apartment, Suite, etc. (Optional)</label>
+            <input type="text" id="address2" name="address2" class="form-input" placeholder="Apt, suite, unit, etc." autocomplete="address-line2" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="city">City</label>
+              <input type="text" id="city" name="city" class="form-input" placeholder="City" autocomplete="address-level2" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="zip">ZIP / Postal Code</label>
+              <input type="text" id="zip" name="zip" class="form-input" placeholder="00000" autocomplete="postal-code" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="country">Country</label>
+              <select id="country" name="country" class="form-select" autocomplete="country" required>
+                <option value="" disabled selected>Select country</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="DE">Germany</option>
+                <option value="FR">France</option>
+                <option value="JP">Japan</option>
+                <option value="KR">South Korea</option>
+                <option value="IT">Italy</option>
+                <option value="ES">Spain</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="state">State / Province</label>
+              <input type="text" id="state" name="state" class="form-input" placeholder="State / Province" autocomplete="address-level1" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone (Optional)</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 (000) 000-0000" autocomplete="tel" />
+          </div>
+        </div>
+
+        <!-- Shipping Method -->
+        <div class="checkout-section">
+          <div class="checkout-section-title">Shipping Method</div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);">
+
+            <label style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;cursor:pointer;border-bottom:1px solid var(--border);transition:background 0.2s ease;" class="shipping-option">
+              <input type="radio" name="shipping" value="standard" checked style="accent-color:#fff;width:16px;height:16px;" />
+              <div style="flex:1;">
+                <div style="font-size:0.78rem;color:var(--white);font-weight:500;">Standard Shipping</div>
+                <div style="font-size:0.68rem;color:var(--silver-dark);margin-top:0.15rem;">5–8 business days</div>
+              </div>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">$12.00</span>
+            </label>
+
+            <label style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;cursor:pointer;border-bottom:1px solid var(--border);transition:background 0.2s ease;" class="shipping-option">
+              <input type="radio" name="shipping" value="express" style="accent-color:#fff;width:16px;height:16px;" />
+              <div style="flex:1;">
+                <div style="font-size:0.78rem;color:var(--white);font-weight:500;">Express Shipping</div>
+                <div style="font-size:0.68rem;color:var(--silver-dark);margin-top:0.15rem;">2–3 business days</div>
+              </div>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">$28.00</span>
+            </label>
+
+            <label style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;cursor:pointer;transition:background 0.2s ease;" class="shipping-option">
+              <input type="radio" name="shipping" value="overnight" style="accent-color:#fff;width:16px;height:16px;" />
+              <div style="flex:1;">
+                <div style="font-size:0.78rem;color:var(--white);font-weight:500;">Overnight Shipping</div>
+                <div style="font-size:0.68rem;color:var(--silver-dark);margin-top:0.15rem;">Next business day</div>
+              </div>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--white);">$48.00</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Payment -->
+        <div class="checkout-section">
+          <div class="checkout-section-title">Payment</div>
+
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--surface);border:1px solid var(--border-dim);">
+            <span style="font-size:0.8rem;">🔒</span>
+            <span style="font-size:0.68rem;color:var(--silver-dark);letter-spacing:0.05em;">Your payment information is encrypted and secure</span>
+          </div>
+
+          <div class="payment-methods" role="radiogroup" aria-label="Payment method">
+            <div class="payment-method active" data-method="card" role="radio" aria-checked="true" tabindex="0">
+              <div class="payment-radio">
+                <div class="payment-radio-dot"></div>
+              </div>
+              <span class="payment-method-name">Credit or Debit Card</span>
+              <span class="payment-method-icon">VISA · MC · AMEX</span>
+            </div>
+
+            <div class="payment-method" data-method="paypal" role="radio" aria-checked="false" tabindex="0">
+              <div class="payment-radio">
+                <div class="payment-radio-dot"></div>
+              </div>
+              <span class="payment-method-name">PayPal</span>
+              <span class="payment-method-icon">PayPal</span>
+            </div>
+
+            <div class="payment-method" data-method="apple" role="radio" aria-checked="false" tabindex="0">
+              <div class="payment-radio">
+                <div class="payment-radio-dot"></div>
+              </div>
+              <span class="payment-method-name">Apple Pay</span>
+              <span class="payment-method-icon">⌘ Pay</span>
+            </div>
+
+            <div class="payment-method" data-method="crypto" role="radio" aria-checked="false" tabindex="0">
+              <div class="payment-radio">
+                <div class="payment-radio-dot"></div>
+              </div>
+              <span class="payment-method-name">Cryptocurrency</span>
+              <span class="payment-method-icon">BTC · ETH</span>
+            </div>
+          </div>
+
+          <!-- Card fields (visible by default) -->
+          <div class="card-fields visible">
+            <div class="form-group">
+              <label class="form-label" for="card-number">Card Number</label>
+              <input type="text" id="card-number" name="card_number" class="form-input" placeholder="0000 0000 0000 0000" autocomplete="cc-number" maxlength="19" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="card-expiry">Expiry Date</label>
+                <input type="text" id="card-expiry" name="card_expiry" class="form-input" placeholder="MM / YY" autocomplete="cc-exp" maxlength="7" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="card-cvc">Security Code (CVV)</label>
+                <input type="text" id="card-cvc" name="card_cvc" class="form-input" placeholder="CVV" autocomplete="cc-csc" maxlength="4" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="card-name">Name on Card</label>
+              <input type="text" id="card-name" name="card_name" class="form-input" placeholder="Full name as shown on card" autocomplete="cc-name" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Discount code (checkout) -->
+        <div class="checkout-section">
+          <div class="checkout-section-title">Discount Code</div>
+          <div style="display:flex;gap:0;border:1px solid var(--border);">
+            <input type="text" id="checkout-discount" placeholder="Enter discount code" class="form-input" style="border:none;flex:1;" aria-label="Discount code" />
+            <button type="button" class="newsletter-submit" style="padding:0.875rem 1.25rem;" onclick="applyDiscount()">Apply</button>
+          </div>
+        </div>
+
+        <!-- Place Order -->
+        <button type="submit" class="btn btn-primary btn-full" style="height:56px;font-size:0.72rem;letter-spacing:0.25em;margin-top:0.5rem;">
+          Place Order — $360.00
+        </button>
+
+        <div class="checkout-secure">
+          <span>🔒</span>
+          <span class="checkout-secure-text">Encrypted &amp; Secure · SSL Protected · No data stored</span>
+        </div>
+
+        <div style="text-align:center;margin-top:1.5rem;">
+          <a href="cart.html" style="font-size:0.65rem;color:var(--silver-dark);letter-spacing:0.1em;text-decoration:underline;text-underline-offset:3px;">← Return to Cart</a>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- ---- RIGHT: Order Summary Column ---- -->
+    <div class="checkout-summary-col">
+      <div style="position:sticky;top:2rem;">
+
+        <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--silver-dark);margin-bottom:1.5rem;">Order Summary</div>
+
+        <!-- Order Items -->
+        <div>
+          <!-- Hoodie -->
+          <div class="checkout-order-item">
+            <div class="checkout-order-img">
+              <div class="checkout-order-img-badge">1</div>
+              <svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+                <rect width="80" height="107" fill="#0c0c0c"/>
+                <ellipse cx="40" cy="30" rx="35" ry="20" fill="rgba(255,255,255,0.01)"/>
+                <path d="M20 38 L10 55 L9 68 L14 71 L20 58 L21 48 Z" fill="#161616" stroke="#1e1e1e" stroke-width="0.4"/>
+                <path d="M60 38 L70 55 L71 68 L66 71 L60 58 L59 48 Z" fill="#161616" stroke="#1e1e1e" stroke-width="0.4"/>
+                <path d="M30 15 Q40 6 50 15 L53 25 Q40 18 27 25 Z" fill="#1a1a1a" stroke="#222" stroke-width="0.4"/>
+                <path d="M21 37 L28 25 L40 27 L52 25 L59 37 L59 100 L21 100 Z" fill="#181818" stroke="#1c1c1c" stroke-width="0.4"/>
+                <text x="40" y="58" font-family="UnifrakturMaguntia, serif" font-size="5" fill="#c0c0c0" text-anchor="middle">saint void</text>
+                <path d="M14 46 L10 56 L15 55 L11 66" stroke="#7a7a7a" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="checkout-order-details">
+              <div class="checkout-order-name">SAINT VOID Hoodie</div>
+              <div class="checkout-order-meta">Size: M · Drop 01</div>
+            </div>
+            <div class="checkout-order-price">$189.00</div>
+          </div>
+
+          <!-- Sweatpants -->
+          <div class="checkout-order-item">
+            <div class="checkout-order-img">
+              <div class="checkout-order-img-badge">1</div>
+              <svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+                <rect width="80" height="107" fill="#0c0c0c"/>
+                <rect x="16" y="8" width="48" height="9" rx="1" fill="#151515" stroke="#1e1e1e" stroke-width="0.4"/>
+                <path d="M16 17 L16 98 Q16 102 20 103 L38 103 Q41 102 41 98 L41 17 Z" fill="#161616" stroke="#1c1c1c" stroke-width="0.4"/>
+                <path d="M39 17 L39 98 Q39 102 43 103 L62 103 Q65 102 65 98 L65 17 Z" fill="#141414" stroke="#1c1c1c" stroke-width="0.4"/>
+                <text x="28" y="88" font-family="UnifrakturMaguntia, serif" font-size="19" fill="#c0c0c0" text-anchor="middle"
+                  transform="rotate(-90, 28, 58)" opacity="0.9">saint void</text>
+                <path d="M22 32 L18 44 L23 43 L19 56" stroke="#888" stroke-width="1" fill="none" stroke-linecap="round"/>
+                <line x1="40" y1="17" x2="40" y2="104" stroke="#121212" stroke-width="0.8"/>
+              </svg>
+            </div>
+            <div class="checkout-order-details">
+              <div class="checkout-order-name">SAINT VOID Sweatpants</div>
+              <div class="checkout-order-meta">Size: M · Drop 01</div>
+            </div>
+            <div class="checkout-order-price">$159.00</div>
+          </div>
+        </div>
+
+        <!-- Discount field in summary -->
+        <div style="margin-top:1rem;display:flex;gap:0;border:1px solid var(--border);">
+          <input type="text" placeholder="Discount code" class="form-input" style="border:none;flex:1;padding:0.7rem 0.875rem;font-size:0.75rem;" aria-label="Discount code" />
+          <button class="newsletter-submit" style="padding:0.7rem 1rem;font-size:0.58rem;" type="button">Apply</button>
+        </div>
+
+        <!-- Totals -->
+        <div class="checkout-totals">
+          <div class="checkout-total-line">
+            <span class="checkout-total-label">Subtotal</span>
+            <span class="checkout-total-value">$348.00</span>
+          </div>
+          <div class="checkout-total-line">
+            <span class="checkout-total-label">Shipping</span>
+            <span class="checkout-total-value">$12.00</span>
+          </div>
+          <div class="checkout-total-line">
+            <span class="checkout-total-label">Tax</span>
+            <span class="checkout-total-value">Included</span>
+          </div>
+        </div>
+
+        <div class="checkout-grand">
+          <span class="checkout-grand-label">Total</span>
+          <span class="checkout-grand-value">$360.00</span>
+        </div>
+
+        <!-- Trust badges -->
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border-dim);display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-size:1rem;">🔒</span>
+            <span style="font-size:0.68rem;color:var(--silver-dark);letter-spacing:0.03em;">256-bit SSL encryption</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-size:1rem;">📦</span>
+            <span style="font-size:0.68rem;color:var(--silver-dark);letter-spacing:0.03em;">Ships within 3–5 business days</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-size:1rem;">↩️</span>
+            <span style="font-size:0.68rem;color:var(--silver-dark);letter-spacing:0.03em;">14-day hassle-free returns</span>
+          </div>
+        </div>
+
+        <!-- Brand watermark -->
+        <div style="margin-top:3rem;text-align:center;opacity:0.15;">
+          <span style="font-family:'UnifrakturMaguntia',serif;font-size:1.4rem;color:var(--white);">saint void</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+<script>
+// Format card number input
+const cardNum = document.getElementById('card-number');
+if (cardNum) {
+  cardNum.addEventListener('input', function(e) {
+    let v = this.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    let matches = v.match(/\d{4,16}/g);
+    let match = (matches && matches[0]) || '';
+    let parts = [];
+    for (let i = 0, len = match.length; i < len; i += 4) {
+      parts.push(match.substring(i, i + 4));
+    }
+    this.value = parts.length ? parts.join(' ') : v;
+  });
+}
+
+// Format expiry
+const expiry = document.getElementById('card-expiry');
+if (expiry) {
+  expiry.addEventListener('input', function(e) {
+    let v = this.value.replace(/\D/g, '');
+    if (v.length >= 2) v = v.substring(0, 2) + ' / ' + v.substring(2, 4);
+    this.value = v;
+  });
+}
+
+// Highlight shipping options on hover
+document.querySelectorAll('.shipping-option').forEach(opt => {
+  opt.addEventListener('mouseenter', function() {
+    this.style.background = 'var(--surface)';
+  });
+  opt.addEventListener('mouseleave', function() {
+    this.style.background = '';
+  });
+  opt.addEventListener('change', function() {
+    const val = this.querySelector('input').value;
+    const prices = { standard: 12, express: 28, overnight: 48 };
+    const ship = prices[val] || 12;
+    document.querySelector('.checkout-grand-value').textContent = `$${(348 + ship).toFixed(2)}`;
+    document.querySelector('.checkout-total-value').textContent = `$${ship.toFixed(2)}`;
+    document.querySelector('[type="submit"]').textContent = `Place Order — $${(348 + ship).toFixed(2)}`;
+  });
+});
+
+function applyDiscount() {
+  const input = document.getElementById('checkout-discount');
+  if (!input) return;
+  const val = input.value.trim().toUpperCase();
+  if (val === 'VOID10' || val === 'SAINT') {
+    input.value = '✓ ' + val + ' (–10%)';
+    input.disabled = true;
+  }
+}
+</script>
+</body>
+</html>

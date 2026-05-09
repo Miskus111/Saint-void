@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart — SAINT VOID</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ================================================
+     NAVIGATION
+     ================================================ -->
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="nav-logo">saint void</a>
+  <ul class="nav-links">
+    <li><a href="index.html#collection">Collection</a></li>
+    <li><a href="index.html#lookbook">Lookbook</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#drop">Drop</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="cart.html" class="nav-cart">
+      Cart <span class="cart-count" style="display:none;">0</span>
+    </a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+  <button class="mobile-close" aria-label="Close">✕</button>
+  <a href="index.html#collection">Collection</a>
+  <a href="index.html#lookbook">Lookbook</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#drop">Drop</a>
+</div>
+
+<!-- ================================================
+     CART PAGE
+     ================================================ -->
+<main class="cart-page">
+  <div class="cart-header">
+    <h1 class="cart-title">Your Cart</h1>
+  </div>
+
+  <div class="cart-layout">
+
+    <!-- ---- Cart Items ---- -->
+    <div>
+      <div class="cart-items" id="cart-items">
+
+        <!-- Item 1: Hoodie -->
+        <div class="cart-item" data-price="189">
+          <a href="product-hoodie.html" class="cart-item-img" aria-label="SAINT VOID Hoodie">
+            <!-- Hoodie mini visual -->
+            <svg viewBox="0 0 100 133" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+              <rect width="100" height="133" fill="#0a0a0a"/>
+              <ellipse cx="50" cy="40" rx="45" ry="28" fill="rgba(255,255,255,0.01)"/>
+              <path d="M24 45 L12 65 L11 80 L17 83 L23 68 L25 58 Z" fill="#161616" stroke="#1e1e1e" stroke-width="0.5"/>
+              <path d="M76 45 L88 65 L89 80 L83 83 L77 68 L75 58 Z" fill="#161616" stroke="#1e1e1e" stroke-width="0.5"/>
+              <path d="M36 18 Q50 7 64 18 L67 30 Q50 22 33 30 Z" fill="#1a1a1a" stroke="#222" stroke-width="0.4"/>
+              <path d="M25 44 L34 30 L50 33 L66 30 L75 44 L75 120 L25 120 Z" fill="#181818" stroke="#1c1c1c" stroke-width="0.4"/>
+              <path d="M36 73 Q36 68 42 68 L58 68 Q64 68 64 73 L64 94 Q64 97 60 97 L40 97 Q36 97 36 94 Z" fill="#0e0e0e" stroke="#191919" stroke-width="0.4"/>
+              <text x="50" y="62" font-family="UnifrakturMaguntia, serif" font-size="6" fill="#c0c0c0" text-anchor="middle">saint void</text>
+              <path d="M17 56 L13 66 L18 65 L14 76" stroke="#7a7a7a" stroke-width="1" fill="none" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <div class="cart-item-info">
+            <div class="cart-item-name">SAINT VOID Hoodie</div>
+            <div class="cart-item-meta">Size: M</div>
+            <div class="cart-item-meta">Drop 01 — Heavyweight Fleece</div>
+            <div class="cart-item-price" style="margin-top:0.25rem;">$189.00</div>
+            <div class="cart-item-controls">
+              <div class="cart-qty" aria-label="Quantity">
+                <button class="cart-qty-btn" data-action="minus" aria-label="Decrease">−</button>
+                <div class="cart-qty-num">1</div>
+                <button class="cart-qty-btn" data-action="plus" aria-label="Increase">+</button>
+              </div>
+              <button class="cart-remove" aria-label="Remove SAINT VOID Hoodie from cart">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Sweatpants -->
+        <div class="cart-item" data-price="159">
+          <a href="product-sweatpants.html" class="cart-item-img" aria-label="SAINT VOID Sweatpants">
+            <!-- Sweatpants mini visual -->
+            <svg viewBox="0 0 100 133" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+              <rect width="100" height="133" fill="#0a0a0a"/>
+              <rect x="19" y="11" width="62" height="11" rx="1" fill="#151515" stroke="#1e1e1e" stroke-width="0.4"/>
+              <path d="M19 22 L19 118 Q19 122 23 123 L48 123 Q51 122 51 118 L51 22 Z" fill="#161616" stroke="#1c1c1c" stroke-width="0.4"/>
+              <path d="M49 22 L49 118 Q49 122 53 123 L77 123 Q81 122 81 118 L81 22 Z" fill="#141414" stroke="#1c1c1c" stroke-width="0.4"/>
+              <text x="35" y="105" font-family="UnifrakturMaguntia, serif" font-size="22" fill="#c0c0c0" text-anchor="middle"
+                transform="rotate(-90, 35, 70)" opacity="0.9">saint void</text>
+              <path d="M26 40 L21 55 L27 54 L22 68" stroke="#888" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <line x1="50" y1="22" x2="50" y2="124" stroke="#121212" stroke-width="0.8"/>
+            </svg>
+          </a>
+          <div class="cart-item-info">
+            <div class="cart-item-name">SAINT VOID Sweatpants</div>
+            <div class="cart-item-meta">Size: M</div>
+            <div class="cart-item-meta">Drop 01 — Heavyweight Cotton</div>
+            <div class="cart-item-price" style="margin-top:0.25rem;">$159.00</div>
+            <div class="cart-item-controls">
+              <div class="cart-qty" aria-label="Quantity">
+                <button class="cart-qty-btn" data-action="minus" aria-label="Decrease">−</button>
+                <div class="cart-qty-num">1</div>
+                <button class="cart-qty-btn" data-action="plus" aria-label="Increase">+</button>
+              </div>
+              <button class="cart-remove" aria-label="Remove SAINT VOID Sweatpants from cart">Remove</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cart-items -->
+
+      <!-- Continue shopping -->
+      <div style="padding:2rem 0;">
+        <a href="index.html#collection" class="btn btn-dark" style="display:inline-flex;gap:0.5rem;">
+          ← Continue Shopping
+        </a>
+      </div>
+    </div>
+
+    <!-- ---- Cart Summary ---- -->
+    <div>
+      <div class="cart-summary">
+        <div class="cart-summary-title">Order Summary</div>
+
+        <div class="cart-summary-line">
+          <span class="cart-summary-label">Subtotal</span>
+          <span class="cart-summary-value cart-subtotal-value">$348.00</span>
+        </div>
+        <div class="cart-summary-line">
+          <span class="cart-summary-label">Shipping</span>
+          <span class="cart-summary-value">Calculated at checkout</span>
+        </div>
+        <div class="cart-summary-line">
+          <span class="cart-summary-label">Tax</span>
+          <span class="cart-summary-value">Included</span>
+        </div>
+
+        <!-- Discount code -->
+        <div class="cart-discount" style="margin-top:1rem;">
+          <input type="text" placeholder="Discount code" class="cart-discount-input" aria-label="Discount code" />
+          <button class="cart-discount-btn">Apply</button>
+        </div>
+
+        <div class="cart-summary-total">
+          <span class="cart-total-label">Estimated Total</span>
+          <span class="cart-total-value">$348.00</span>
+        </div>
+
+        <a href="checkout.html" class="btn btn-primary btn-full" style="margin-top:0.5rem;font-size:0.68rem;letter-spacing:0.2em;">
+          Proceed to Checkout
+        </a>
+
+        <div style="margin-top:1.25rem;text-align:center;">
+          <span style="font-size:0.62rem;color:var(--silver-dark);letter-spacing:0.08em;">
+            🔒 Secure Checkout · SSL Encrypted
+          </span>
+        </div>
+
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border-dim);">
+          <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--silver-dark);margin-bottom:0.75rem;">We Accept</div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span style="padding:0.25rem 0.6rem;border:1px solid var(--border);font-size:0.6rem;color:var(--silver-dark);letter-spacing:0.05em;">VISA</span>
+            <span style="padding:0.25rem 0.6rem;border:1px solid var(--border);font-size:0.6rem;color:var(--silver-dark);letter-spacing:0.05em;">MASTERCARD</span>
+            <span style="padding:0.25rem 0.6rem;border:1px solid var(--border);font-size:0.6rem;color:var(--silver-dark);letter-spacing:0.05em;">AMEX</span>
+            <span style="padding:0.25rem 0.6rem;border:1px solid var(--border);font-size:0.6rem;color:var(--silver-dark);letter-spacing:0.05em;">PAYPAL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cart-layout -->
+
+  <!-- You May Also Like (cross-sell) -->
+  <div class="related" style="margin-top:0;">
+    <div class="section-header">
+      <div>
+        <div class="section-label">From the Collection</div>
+        <h2 class="section-title">You May Also Like</h2>
+      </div>
+    </div>
+    <div class="related-grid">
+      <article class="product-card fade-up">
+        <a href="product-hoodie.html" class="product-card-visual">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse 65% 50% at 50% 28%,rgba(180,180,180,0.07) 0%,transparent 65%);z-index:1;pointer-events:none;"></div>
+          <svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;">
+            <rect width="480" height="600" fill="#060606"/>
+            <path d="M118 215 L58 300 L53 375 L80 392 L110 320 L120 280 Z" fill="#161616" stroke="#1f1f1f" stroke-width="0.8"/>
+            <path d="M362 215 L422 300 L427 375 L400 392 L370 320 L360 280 Z" fill="#161616" stroke="#1f1f1f" stroke-width="0.8"/>
+            <path d="M172 82 Q200 35 240 32 Q280 35 308 82 L320 138 Q260 108 240 105 Q220 108 160 138 Z" fill="#1a1a1a" stroke="#242424" stroke-width="0.9"/>
+            <path d="M120 210 L162 138 L240 148 L318 138 L360 210 L360 538 L120 538 Z" fill="#181818" stroke="#1c1c1c" stroke-width="0.8"/>
+            <text x="240" y="292" font-family="UnifrakturMaguntia, serif" font-size="28" fill="#c8c8c8" text-anchor="middle" letter-spacing="2">saint void</text>
+            <path d="M84 268 L68 310 L86 306 L70 348" stroke="#9a9a9a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="product-card-info">
+          <div class="product-card-tag">Heavyweight Fleece</div>
+          <div class="product-card-name">SAINT VOID Hoodie</div>
+          <div class="product-card-footer">
+            <span class="product-price">$189.00</span>
+          </div>
+          <div class="product-card-actions">
+            <a href="product-hoodie.html" class="btn btn-outline" style="flex:1;">View Product</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-up delay-2">
+        <a href="product-sweatpants.html" class="product-card-visual">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse 65% 50% at 50% 35%,rgba(160,160,160,0.07) 0%,transparent 65%);z-index:1;pointer-events:none;"></div>
+          <svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;">
+            <rect width="480" height="600" fill="#060606"/>
+            <rect x="92" y="52" width="296" height="50" rx="4" fill="#151515" stroke="#202020" stroke-width="0.9"/>
+            <path d="M92 102 L92 555 Q92 568 108 570 L228 570 Q242 568 244 555 L244 102 Z" fill="#161616" stroke="#1c1c1c" stroke-width="0.8"/>
+            <path d="M236 102 L236 555 Q236 568 252 570 L372 570 Q386 568 388 555 L388 102 Z" fill="#141414" stroke="#1c1c1c" stroke-width="0.8"/>
+            <text x="168" y="510" font-family="UnifrakturMaguntia, serif" font-size="110" fill="#c0c0c0" text-anchor="middle"
+              transform="rotate(-90, 168, 330)" letter-spacing="4" opacity="0.92">saint void</text>
+            <path d="M128 198 L106 258 L132 252 L108 318" stroke="#909090" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="product-card-info">
+          <div class="product-card-tag">Heavyweight Cotton</div>
+          <div class="product-card-name">SAINT VOID Sweatpants</div>
+          <div class="product-card-footer">
+            <span class="product-price">$159.00</span>
+          </div>
+          <div class="product-card-actions">
+            <a href="product-sweatpants.html" class="btn btn-outline" style="flex:1;">View Product</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-bottom" style="border-top:1px solid var(--border-dim);padding:1.5rem clamp(1.5rem,5vw,5rem);">
+    <span class="footer-copy">© 2025 SAINT VOID. All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+// Discount code button
+document.querySelector('.cart-discount-btn')?.addEventListener('click', function() {
+  const input = document.querySelector('.cart-discount-input');
+  if (input && input.value.trim()) {
+    // Simulate discount applied
+    const val = input.value.trim().toUpperCase();
+    if (val === 'VOID10' || val === 'SAINT') {
+      const subtotalEl = document.querySelector('.cart-subtotal-value');
+      const totalEl = document.querySelector('.cart-total-value');
+      if (subtotalEl) {
+        const current = parseFloat(subtotalEl.textContent.replace('$','')) || 348;
+        const disc = (current * 0.9).toFixed(2);
+        subtotalEl.textContent = `$${disc}`;
+        if (totalEl) totalEl.textContent = `$${disc}`;
+        input.value = '✓ ' + val;
+        input.disabled = true;
+        this.textContent = 'Applied';
+        this.disabled = true;
+      }
+    } else {
+      input.style.borderColor = 'rgba(200,80,80,0.4)';
+      setTimeout(() => input.style.borderColor = '', 1500);
+    }
+  }
+});
+</script>
+</body>
+</html>
