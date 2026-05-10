@@ -281,53 +281,160 @@ function initPaymentToggle() {
   });
 }
 
-/* ---- Stars background ---- */
+/* ---- Animated canvas particle stars ---- */
 function initStars() {
-  const starsContainer = document.querySelector('.hero-stars');
-  if (!starsContainer) return;
+  const container = document.querySelector('.hero-stars');
+  const hero      = document.querySelector('.hero');
+  if (!container || !hero) return;
 
-  const svgNS = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('viewBox', '0 0 1200 800');
-  svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-  svg.style.cssText = 'width:100%;height:100%;position:absolute;inset:0;';
+  const canvas = document.createElement('canvas');
+  canvas.className = 'hero-canvas';
+  canvas.setAttribute('aria-hidden', 'true');
+  container.appendChild(canvas);
 
-  const starData = [];
-  for (let i = 0; i < 120; i++) {
-    starData.push({
-      x: Math.random() * 1200,
-      y: Math.random() * 800,
-      r: Math.random() * 1.2 + 0.2,
-      o: Math.random() * 0.5 + 0.05
+  const ctx     = canvas.getContext('2d');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() {
+    canvas.width  = hero.offsetWidth  || window.innerWidth;
+    canvas.height = hero.offsetHeight || window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  const isMobile = window.innerWidth < 768;
+  const COUNT    = isMobile ? 55 : 115;
+
+  const particles = Array.from({ length: COUNT }, () => ({
+    x:            Math.random() * canvas.width,
+    y:            Math.random() * canvas.height,
+    r:            Math.random() * 1.35 + 0.15,
+    baseO:        Math.random() * 0.13 + 0.025,
+    vx:           (Math.random() - 0.5) * 0.14,
+    vy:           -(Math.random() * 0.09 + 0.02),
+    phase:        Math.random() * Math.PI * 2,
+    twinkleSpeed: Math.random() * 0.5 + 0.18,
+    wobble:       (Math.random() - 0.5) * 0.2
+  }));
+
+  let t = 0, raf;
+
+  function frame() {
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    if (reduced) {
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${p.baseO * 0.55})`;
+        ctx.fill();
+      });
+      return;
+    }
+
+    t += 0.016;
+    particles.forEach(p => {
+      const o = p.baseO * (0.38 + 0.62 * Math.abs(Math.sin(t * p.twinkleSpeed + p.phase)));
+      p.x += p.vx + Math.sin(t * 0.38 + p.phase) * p.wobble;
+      p.y += p.vy;
+      if (p.x < -4)  p.x = W + 4;
+      if (p.x > W+4) p.x = -4;
+      if (p.y < -4)  p.y = H + 4;
+      if (p.y > H+4) p.y = -4;
+
+      if (p.r > 0.85) {
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4.5);
+        g.addColorStop(0, `rgba(255,255,255,${o * 0.65})`);
+        g.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${o})`;
+      ctx.fill();
     });
+
+    raf = requestAnimationFrame(frame);
   }
 
-  starData.forEach(s => {
-    const circle = document.createElementNS(svgNS, 'circle');
-    circle.setAttribute('cx', s.x);
-    circle.setAttribute('cy', s.y);
-    circle.setAttribute('r', s.r);
-    circle.setAttribute('fill', 'white');
-    circle.setAttribute('opacity', s.o);
-    svg.appendChild(circle);
+  frame();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden)  { cancelAnimationFrame(raf); }
+    else if (!reduced)    { raf = requestAnimationFrame(frame); }
   });
+}
 
-  /* Lightning bolt */
-  const lightning = document.createElementNS(svgNS, 'path');
-  lightning.setAttribute('d', 'M 150 80 L 120 200 L 148 200 L 110 350 L 175 180 L 148 180 L 185 80 Z');
-  lightning.setAttribute('fill', 'none');
-  lightning.setAttribute('stroke', 'rgba(255,255,255,0.03)');
-  lightning.setAttribute('stroke-width', '1');
-  svg.appendChild(lightning);
+/* ---- Mouse parallax depth ---- */
+function initHeroParallax() {
+  const hero = document.querySelector('.hero');
+  if (!hero || window.innerWidth < 768) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const lightning2 = document.createElementNS(svgNS, 'path');
-  lightning2.setAttribute('d', 'M 1050 150 L 1020 270 L 1048 270 L 1010 420 L 1075 250 L 1048 250 L 1085 150 Z');
-  lightning2.setAttribute('fill', 'rgba(255,255,255,0.015)');
-  lightning2.setAttribute('stroke', 'rgba(255,255,255,0.04)');
-  lightning2.setAttribute('stroke-width', '1');
-  svg.appendChild(lightning2);
+  const atmo    = hero.querySelector('.hero-atmospheric');
+  const stars   = hero.querySelector('.hero-stars');
+  const content = hero.querySelector('.hero-content');
 
-  starsContainer.appendChild(svg);
+  let tx = 0, ty = 0, cx = 0, cy = 0;
+
+  hero.addEventListener('mousemove', e => {
+    const r = hero.getBoundingClientRect();
+    tx = ((e.clientX - r.left)  / r.width  - 0.5) * 2;
+    ty = ((e.clientY - r.top)   / r.height - 0.5) * 2;
+  }, { passive: true });
+
+  hero.addEventListener('mouseleave', () => { tx = 0; ty = 0; });
+
+  (function tick() {
+    cx += (tx - cx) * 0.055;
+    cy += (ty - cy) * 0.055;
+    if (atmo)    atmo.style.transform    = `translate(${cx * -22}px, ${cy * -13}px) scale(1.05)`;
+    if (stars)   stars.style.transform   = `translate(${cx * -9}px,  ${cy * -6}px)`;
+    if (content) content.style.transform = `translate(${cx * 5}px,   ${cy * 3}px)`;
+    requestAnimationFrame(tick);
+  })();
+}
+
+/* ---- JS lightning flashes ---- */
+function initHeroLightning() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const bolts = [
+    document.getElementById('heroLightning1'),
+    document.getElementById('heroLightning2')
+  ].filter(Boolean);
+  if (!bolts.length) return;
+
+  function flash(bolt) {
+    bolt.style.filter     = 'brightness(5) opacity(1)';
+    bolt.style.transition = 'filter 0.06s ease';
+    setTimeout(() => {
+      bolt.style.filter     = '';
+      bolt.style.transition = 'filter 0.5s ease';
+      if (Math.random() > 0.42) {
+        setTimeout(() => {
+          bolt.style.filter     = 'brightness(4) opacity(1)';
+          bolt.style.transition = 'filter 0.05s ease';
+          setTimeout(() => {
+            bolt.style.filter     = '';
+            bolt.style.transition = 'filter 0.6s ease';
+          }, 60);
+        }, 130);
+      }
+    }, 85);
+  }
+
+  (function schedule() {
+    setTimeout(() => {
+      flash(bolts[Math.floor(Math.random() * bolts.length)]);
+      schedule();
+    }, 2800 + Math.random() * 7500);
+  })();
 }
 
 /* ---- Smooth page links ---- */
@@ -382,6 +489,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewsletter();
   initPaymentToggle();
   initStars();
+  initHeroParallax();
+  initHeroLightning();
   initPageLinks();
   initCheckout();
 });
