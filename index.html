@@ -50,175 +50,71 @@
      HERO
      ================================================ -->
 <section class="hero" id="hero">
+
+  <!-- Layered void background -->
   <div class="hero-bg"></div>
 
-  <!-- Cinematic atmospheric SVG background -->
-  <svg class="hero-atmospheric" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <radialGradient id="centralGlow" cx="50%" cy="38%" r="55%">
-        <stop offset="0%" stop-color="#1c1c1c" stop-opacity="0.7"/>
-        <stop offset="50%" stop-color="#080808" stop-opacity="0.3"/>
-        <stop offset="100%" stop-color="#020202" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="lightBeamGrad" cx="50%" cy="0%" r="100%" fx="50%" fy="0%">
-        <stop offset="0%" stop-color="rgba(210,210,210,0.22)"/>
-        <stop offset="35%" stop-color="rgba(180,180,180,0.09)"/>
-        <stop offset="100%" stop-color="rgba(150,150,150,0)" stop-opacity="0"/>
-      </radialGradient>
-      <filter id="wingGlow" x="-40%" y="-40%" width="180%" height="180%">
-        <feGaussianBlur stdDeviation="28"/>
-      </filter>
-      <filter id="fogBlur" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="40"/>
-      </filter>
-      <filter id="mistBlur" x="-20%" y="-50%" width="140%" height="200%">
-        <feGaussianBlur stdDeviation="20"/>
-      </filter>
-      <filter id="lightningGlow" x="-60%" y="-20%" width="220%" height="140%">
-        <feGaussianBlur stdDeviation="7" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-
-    <!-- Deep dark base -->
-    <rect width="1440" height="900" fill="#010101"/>
-    <!-- Central void depth -->
-    <rect width="1440" height="900" fill="url(#centralGlow)"/>
-
-    <!-- Gothic arch silhouettes left -->
-    <path d="M-20 900 L-20 190 Q-20 30 75 30 Q170 30 170 190 L170 900 Z" fill="#060606" opacity="0.95"/>
-    <path d="M-50 900 L-50 240 Q-50 90 30 90 Q110 90 110 240 L110 900 Z" fill="#080808" opacity="0.8"/>
-
-    <!-- Gothic arch silhouettes right -->
-    <path d="M1460 900 L1460 190 Q1460 30 1365 30 Q1270 30 1270 190 L1270 900 Z" fill="#060606" opacity="0.95"/>
-    <path d="M1490 900 L1490 240 Q1490 90 1410 90 Q1330 90 1330 240 L1330 900 Z" fill="#080808" opacity="0.8"/>
-
-    <!-- Center gothic arch outline -->
-    <path d="M590 900 L590 330 Q590 80 720 30 Q850 80 850 330 L850 900" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="2"/>
-    <path d="M630 900 L630 360 Q630 130 720 90 Q810 130 810 360 L810 900" fill="none" stroke="rgba(255,255,255,0.022)" stroke-width="1"/>
-
-    <!-- Divine light beam from above -->
-    <polygon id="heroLightBeam" points="665,0 775,0 830,900 610,900" fill="url(#lightBeamGrad)" opacity="0.65"/>
-    <polygon points="700,0 740,0 758,720 682,720" fill="url(#lightBeamGrad)" opacity="0.4"/>
-
-    <!-- Angel wing left -->
-    <g id="heroWingLeft" filter="url(#wingGlow)" opacity="0.13">
-      <path d="M510 440 Q350 330 215 362 Q135 388 178 472 Q222 558 368 522 Q445 504 486 472 Z" fill="#d8d8d8"/>
-      <path d="M510 448 Q370 355 268 378 Q198 400 228 462 Q258 524 368 504" fill="#b8b8b8"/>
-      <path d="M490 475 Q385 405 308 418 Q252 432 270 478" fill="#a0a0a0"/>
-    </g>
-
-    <!-- Angel wing right -->
-    <g id="heroWingRight" filter="url(#wingGlow)" opacity="0.13">
-      <path d="M930 440 Q1090 330 1225 362 Q1305 388 1262 472 Q1218 558 1072 522 Q995 504 954 472 Z" fill="#d8d8d8"/>
-      <path d="M930 448 Q1070 355 1172 378 Q1242 400 1212 462 Q1182 524 1072 504" fill="#b8b8b8"/>
-      <path d="M950 475 Q1055 405 1132 418 Q1188 432 1170 478" fill="#a0a0a0"/>
-    </g>
-
-    <!-- Halo rings -->
-    <ellipse id="heroHalo1" cx="720" cy="375" rx="225" ry="60" fill="none" stroke="rgba(220,220,220,0.09)" stroke-width="1.5"/>
-    <ellipse id="heroHalo2" cx="720" cy="385" rx="345" ry="90" fill="none" stroke="rgba(200,200,200,0.055)" stroke-width="1"/>
-    <ellipse cx="720" cy="368" rx="138" ry="35" fill="none" stroke="rgba(230,230,230,0.07)" stroke-width="1"/>
-    <!-- Halo glow bloom -->
-    <ellipse cx="720" cy="375" rx="225" ry="60" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="9" filter="url(#wingGlow)"/>
-
-    <!-- Crack network -->
-    <g opacity="0.055">
-      <line x1="720" y1="0" x2="693" y2="125" stroke="#c0c0c0" stroke-width="0.8"/>
-      <line x1="693" y1="125" x2="648" y2="205" stroke="#c0c0c0" stroke-width="0.7"/>
-      <line x1="693" y1="125" x2="732" y2="190" stroke="#c0c0c0" stroke-width="0.6"/>
-      <line x1="648" y1="205" x2="618" y2="275" stroke="#c0c0c0" stroke-width="0.5"/>
-      <line x1="648" y1="205" x2="668" y2="282" stroke="#c0c0c0" stroke-width="0.4"/>
-      <line x1="732" y1="190" x2="762" y2="255" stroke="#c0c0c0" stroke-width="0.5"/>
-      <line x1="720" y1="0" x2="748" y2="88" stroke="#c0c0c0" stroke-width="0.6"/>
-      <line x1="748" y1="88" x2="794" y2="165" stroke="#c0c0c0" stroke-width="0.5"/>
-      <line x1="248" y1="75" x2="312" y2="150" stroke="#c0c0c0" stroke-width="0.7"/>
-      <line x1="312" y1="150" x2="278" y2="225" stroke="#c0c0c0" stroke-width="0.5"/>
-      <line x1="312" y1="150" x2="355" y2="212" stroke="#c0c0c0" stroke-width="0.5"/>
-      <line x1="1192" y1="58" x2="1128" y2="142" stroke="#c0c0c0" stroke-width="0.7"/>
-      <line x1="1128" y1="142" x2="1162" y2="215" stroke="#c0c0c0" stroke-width="0.5"/>
-      <line x1="1128" y1="142" x2="1086" y2="208" stroke="#c0c0c0" stroke-width="0.5"/>
-    </g>
-
-    <!-- Constellation stars — left -->
-    <circle cx="322" cy="138" r="2" fill="rgba(255,255,255,0.13)"/>
-    <circle cx="372" cy="98" r="1.5" fill="rgba(255,255,255,0.11)"/>
-    <circle cx="422" cy="153" r="1.8" fill="rgba(255,255,255,0.11)"/>
-    <circle cx="382" cy="198" r="1.2" fill="rgba(255,255,255,0.09)"/>
-    <circle cx="442" cy="188" r="1" fill="rgba(255,255,255,0.08)"/>
-    <circle cx="292" cy="183" r="1.3" fill="rgba(255,255,255,0.09)"/>
-    <line x1="322" y1="138" x2="372" y2="98" stroke="rgba(255,255,255,0.055)" stroke-width="0.6"/>
-    <line x1="372" y1="98" x2="422" y2="153" stroke="rgba(255,255,255,0.055)" stroke-width="0.6"/>
-    <line x1="422" y1="153" x2="382" y2="198" stroke="rgba(255,255,255,0.045)" stroke-width="0.5"/>
-    <line x1="382" y1="198" x2="292" y2="183" stroke="rgba(255,255,255,0.045)" stroke-width="0.5"/>
-
-    <!-- Constellation stars — right -->
-    <circle cx="1102" cy="118" r="2" fill="rgba(255,255,255,0.13)"/>
-    <circle cx="1062" cy="168" r="1.5" fill="rgba(255,255,255,0.11)"/>
-    <circle cx="1152" cy="173" r="1.8" fill="rgba(255,255,255,0.11)"/>
-    <circle cx="1122" cy="218" r="1.2" fill="rgba(255,255,255,0.09)"/>
-    <circle cx="1182" cy="128" r="1.3" fill="rgba(255,255,255,0.09)"/>
-    <line x1="1102" y1="118" x2="1062" y2="168" stroke="rgba(255,255,255,0.055)" stroke-width="0.6"/>
-    <line x1="1062" y1="168" x2="1152" y2="173" stroke="rgba(255,255,255,0.055)" stroke-width="0.6"/>
-    <line x1="1152" y1="173" x2="1122" y2="218" stroke="rgba(255,255,255,0.045)" stroke-width="0.5"/>
-
-    <!-- Dust particles -->
-    <g opacity="0.07">
-      <circle cx="182" cy="282" r="0.8" fill="white"/><circle cx="242" cy="312" r="0.5" fill="white"/>
-      <circle cx="168" cy="352" r="0.7" fill="white"/><circle cx="212" cy="392" r="0.4" fill="white"/>
-      <circle cx="552" cy="102" r="0.6" fill="white"/><circle cx="522" cy="147" r="0.4" fill="white"/>
-      <circle cx="582" cy="132" r="0.5" fill="white"/><circle cx="902" cy="92" r="0.6" fill="white"/>
-      <circle cx="942" cy="142" r="0.4" fill="white"/><circle cx="872" cy="122" r="0.5" fill="white"/>
-      <circle cx="1262" cy="252" r="0.8" fill="white"/><circle cx="1292" cy="297" r="0.5" fill="white"/>
-      <circle cx="722" cy="162" r="0.6" fill="white"/><circle cx="702" cy="202" r="0.4" fill="white"/>
-      <circle cx="472" cy="262" r="0.5" fill="white"/><circle cx="962" cy="272" r="0.5" fill="white"/>
-    </g>
-
-    <!-- Lightning bolt left -->
-    <g id="heroLightning1">
-      <path d="M268 72 L232 202 L270 194 L228 342 L274 330 L242 442" stroke="rgba(210,210,210,0.07)" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lightningGlow)"/>
-      <path d="M268 72 L232 202 L270 194 L228 342 L274 330 L242 442" stroke="rgba(220,220,220,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M270 194 L298 242 L284 282" stroke="rgba(200,200,200,0.12)" stroke-width="1" fill="none" stroke-linecap="round"/>
-    </g>
-
-    <!-- Lightning bolt right -->
-    <g id="heroLightning2">
-      <path d="M1172 88 L1208 218 L1170 210 L1212 358 L1166 346 L1198 458" stroke="rgba(210,210,210,0.07)" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lightningGlow)"/>
-      <path d="M1172 88 L1208 218 L1170 210 L1212 358 L1166 346 L1198 458" stroke="rgba(220,220,220,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M1170 210 L1142 258 L1156 298" stroke="rgba(200,200,200,0.12)" stroke-width="1" fill="none" stroke-linecap="round"/>
-    </g>
-
-    <!-- Bottom fog -->
-    <g filter="url(#fogBlur)">
-      <ellipse cx="720" cy="900" rx="900" ry="160" fill="#040404" opacity="1"/>
-      <ellipse cx="360" cy="885" rx="620" ry="110" fill="#030303" opacity="0.9"/>
-      <ellipse cx="1080" cy="880" rx="600" ry="100" fill="#030303" opacity="0.9"/>
-      <ellipse cx="720" cy="855" rx="720" ry="85" fill="#050505" opacity="0.75"/>
-    </g>
-
-    <!-- Mid mist wisps -->
-    <g filter="url(#mistBlur)" opacity="0.55">
-      <path d="M80 565 Q340 535 582 565 Q722 578 862 565 Q1102 535 1362 565" stroke="#070707" stroke-width="42" fill="none"/>
-      <path d="M0 645 Q275 615 518 648 Q722 668 926 648 Q1165 615 1440 645" stroke="#060606" stroke-width="36" fill="none"/>
-    </g>
+  <!-- Subtle star / dust field -->
+  <svg class="hero-stars" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="142" cy="98"  r="1.2" fill="rgba(255,255,255,0.18)"/>
+    <circle cx="368" cy="45"  r="0.8" fill="rgba(255,255,255,0.14)"/>
+    <circle cx="892" cy="72"  r="1.0" fill="rgba(255,255,255,0.16)"/>
+    <circle cx="1158" cy="88" r="0.9" fill="rgba(255,255,255,0.12)"/>
+    <circle cx="1342" cy="118" r="1.1" fill="rgba(255,255,255,0.15)"/>
+    <circle cx="278" cy="155" r="0.7" fill="rgba(255,255,255,0.10)"/>
+    <circle cx="512" cy="38"  r="1.0" fill="rgba(255,255,255,0.13)"/>
+    <circle cx="768" cy="112" r="0.6" fill="rgba(255,255,255,0.09)"/>
+    <circle cx="1056" cy="58" r="1.2" fill="rgba(255,255,255,0.17)"/>
+    <circle cx="1388" cy="88" r="0.8" fill="rgba(255,255,255,0.11)"/>
+    <circle cx="88"  cy="220" r="1.0" fill="rgba(255,255,255,0.12)"/>
+    <circle cx="234" cy="188" r="0.7" fill="rgba(255,255,255,0.09)"/>
+    <circle cx="456" cy="242" r="1.3" fill="rgba(255,255,255,0.15)"/>
+    <circle cx="698" cy="168" r="0.9" fill="rgba(255,255,255,0.11)"/>
+    <circle cx="988" cy="198" r="0.7" fill="rgba(255,255,255,0.10)"/>
+    <circle cx="1198" cy="172" r="1.1" fill="rgba(255,255,255,0.14)"/>
+    <circle cx="1402" cy="212" r="0.8" fill="rgba(255,255,255,0.10)"/>
+    <circle cx="178" cy="322" r="0.9" fill="rgba(255,255,255,0.09)"/>
+    <circle cx="312" cy="298" r="0.6" fill="rgba(255,255,255,0.08)"/>
+    <circle cx="588" cy="338" r="1.0" fill="rgba(255,255,255,0.11)"/>
+    <circle cx="1122" cy="308" r="0.8" fill="rgba(255,255,255,0.09)"/>
+    <circle cx="1298" cy="342" r="1.2" fill="rgba(255,255,255,0.12)"/>
+    <circle cx="92"  cy="448" r="0.7" fill="rgba(255,255,255,0.08)"/>
+    <circle cx="422" cy="412" r="1.0" fill="rgba(255,255,255,0.10)"/>
+    <circle cx="1258" cy="442" r="0.9" fill="rgba(255,255,255,0.09)"/>
+    <!-- Brighter accent stars -->
+    <circle cx="188"  cy="72"  r="1.8" fill="rgba(255,255,255,0.22)"/>
+    <circle cx="1262" cy="58"  r="1.6" fill="rgba(255,255,255,0.20)"/>
+    <circle cx="722"  cy="82"  r="1.5" fill="rgba(255,255,255,0.18)"/>
   </svg>
 
-  <!-- CSS-animated fog layers -->
-  <div class="hero-fog-1"></div>
-  <div class="hero-fog-2"></div>
-  <div class="hero-fog-3"></div>
+  <!-- Dark storm-cloud corner vignettes -->
+  <div class="hero-cloud-tl" aria-hidden="true"></div>
+  <div class="hero-cloud-tr" aria-hidden="true"></div>
+  <div class="hero-cloud-bl" aria-hidden="true"></div>
+  <div class="hero-cloud-br" aria-hidden="true"></div>
 
+  <!-- Slow smoke / mist layers -->
+  <div class="hero-smoke-1" aria-hidden="true"></div>
+  <div class="hero-smoke-2" aria-hidden="true"></div>
+  <div class="hero-smoke-3" aria-hidden="true"></div>
+
+  <!-- Centred hero content -->
   <div class="hero-content">
-    <span class="hero-label fade-in">SS 2026 — Limited Drop 01 — Born in Darkness</span>
+    <span class="hero-label fade-in">SS 2026 &mdash; Limited Drop 01 &mdash; Born in Darkness</span>
+
     <h1 class="hero-brand fade-in delay-1">saint void</h1>
+
     <p class="hero-sub fade-in delay-2">
-      Born from silence. Built from ambition. A dark luxury streetwear drop for those turning dreams into reality.
+      A dark luxury streetwear drop born from silence, ambition and the void.
     </p>
+    <p class="hero-sub2 fade-in delay-2">
+      For the ones building something bigger in the dark.
+    </p>
+
     <div class="hero-ctas fade-in delay-3">
-      <a href="#collection" class="btn btn-primary">Shop the Drop</a>
-      <a href="#about" class="btn btn-outline">Discover the Story</a>
+      <a href="#collection" class="btn btn-primary">Enter the Void</a>
+      <a href="#collection" class="btn btn-outline">Shop the Drop</a>
     </div>
-    <p class="hero-micro fade-in delay-4">For those who build in silence.</p>
   </div>
 
   <div class="hero-scroll" aria-hidden="true">
