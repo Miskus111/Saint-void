@@ -11,6 +11,7 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+<div class="void-page-bg" aria-hidden="true"></div>
 
 <!-- ================================================
      NAVIGATION
@@ -51,52 +52,42 @@
      ================================================ -->
 <section class="hero" id="hero">
 
-  <!-- Layered void background -->
-  <div class="hero-bg"></div>
+  <!-- Real void image — slow zoom -->
+  <div class="hero-bg-img" aria-hidden="true"></div>
 
-  <!-- Subtle star / dust field -->
+  <!-- Minimal overlay — just enough for text, image stays visible -->
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <!-- Visible star / dust particles over the image -->
   <svg class="hero-stars" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle cx="142" cy="98"  r="1.2" fill="rgba(255,255,255,0.18)"/>
-    <circle cx="368" cy="45"  r="0.8" fill="rgba(255,255,255,0.14)"/>
-    <circle cx="892" cy="72"  r="1.0" fill="rgba(255,255,255,0.16)"/>
-    <circle cx="1158" cy="88" r="0.9" fill="rgba(255,255,255,0.12)"/>
-    <circle cx="1342" cy="118" r="1.1" fill="rgba(255,255,255,0.15)"/>
-    <circle cx="278" cy="155" r="0.7" fill="rgba(255,255,255,0.10)"/>
-    <circle cx="512" cy="38"  r="1.0" fill="rgba(255,255,255,0.13)"/>
-    <circle cx="768" cy="112" r="0.6" fill="rgba(255,255,255,0.09)"/>
-    <circle cx="1056" cy="58" r="1.2" fill="rgba(255,255,255,0.17)"/>
-    <circle cx="1388" cy="88" r="0.8" fill="rgba(255,255,255,0.11)"/>
-    <circle cx="88"  cy="220" r="1.0" fill="rgba(255,255,255,0.12)"/>
-    <circle cx="234" cy="188" r="0.7" fill="rgba(255,255,255,0.09)"/>
-    <circle cx="456" cy="242" r="1.3" fill="rgba(255,255,255,0.15)"/>
-    <circle cx="698" cy="168" r="0.9" fill="rgba(255,255,255,0.11)"/>
-    <circle cx="988" cy="198" r="0.7" fill="rgba(255,255,255,0.10)"/>
-    <circle cx="1198" cy="172" r="1.1" fill="rgba(255,255,255,0.14)"/>
-    <circle cx="1402" cy="212" r="0.8" fill="rgba(255,255,255,0.10)"/>
-    <circle cx="178" cy="322" r="0.9" fill="rgba(255,255,255,0.09)"/>
-    <circle cx="312" cy="298" r="0.6" fill="rgba(255,255,255,0.08)"/>
-    <circle cx="588" cy="338" r="1.0" fill="rgba(255,255,255,0.11)"/>
-    <circle cx="1122" cy="308" r="0.8" fill="rgba(255,255,255,0.09)"/>
-    <circle cx="1298" cy="342" r="1.2" fill="rgba(255,255,255,0.12)"/>
-    <circle cx="92"  cy="448" r="0.7" fill="rgba(255,255,255,0.08)"/>
-    <circle cx="422" cy="412" r="1.0" fill="rgba(255,255,255,0.10)"/>
-    <circle cx="1258" cy="442" r="0.9" fill="rgba(255,255,255,0.09)"/>
-    <!-- Brighter accent stars -->
-    <circle cx="188"  cy="72"  r="1.8" fill="rgba(255,255,255,0.22)"/>
-    <circle cx="1262" cy="58"  r="1.6" fill="rgba(255,255,255,0.20)"/>
-    <circle cx="722"  cy="82"  r="1.5" fill="rgba(255,255,255,0.18)"/>
+    <circle cx="142"  cy="98"  r="1.8" fill="rgba(255,255,255,0.55)"/>
+    <circle cx="368"  cy="45"  r="1.2" fill="rgba(255,255,255,0.45)"/>
+    <circle cx="892"  cy="72"  r="1.5" fill="rgba(255,255,255,0.50)"/>
+    <circle cx="1158" cy="88"  r="1.3" fill="rgba(255,255,255,0.42)"/>
+    <circle cx="1342" cy="118" r="1.6" fill="rgba(255,255,255,0.48)"/>
+    <circle cx="278"  cy="155" r="1.0" fill="rgba(255,255,255,0.38)"/>
+    <circle cx="512"  cy="38"  r="1.4" fill="rgba(255,255,255,0.46)"/>
+    <circle cx="768"  cy="112" r="0.9" fill="rgba(255,255,255,0.35)"/>
+    <circle cx="1056" cy="58"  r="1.7" fill="rgba(255,255,255,0.52)"/>
+    <circle cx="1388" cy="88"  r="1.1" fill="rgba(255,255,255,0.40)"/>
+    <circle cx="88"   cy="220" r="1.4" fill="rgba(255,255,255,0.44)"/>
+    <circle cx="234"  cy="188" r="1.0" fill="rgba(255,255,255,0.36)"/>
+    <circle cx="456"  cy="242" r="1.8" fill="rgba(255,255,255,0.50)"/>
+    <circle cx="698"  cy="168" r="1.3" fill="rgba(255,255,255,0.42)"/>
+    <circle cx="988"  cy="198" r="1.0" fill="rgba(255,255,255,0.38)"/>
+    <circle cx="1198" cy="172" r="1.6" fill="rgba(255,255,255,0.48)"/>
+    <circle cx="1402" cy="212" r="1.2" fill="rgba(255,255,255,0.40)"/>
+    <circle cx="178"  cy="322" r="1.3" fill="rgba(255,255,255,0.36)"/>
+    <circle cx="588"  cy="338" r="1.5" fill="rgba(255,255,255,0.44)"/>
+    <circle cx="1122" cy="308" r="1.2" fill="rgba(255,255,255,0.38)"/>
+    <circle cx="1298" cy="342" r="1.7" fill="rgba(255,255,255,0.46)"/>
+    <!-- Bright accent stars -->
+    <circle cx="188"  cy="72"  r="2.5" fill="rgba(255,255,255,0.75)"/>
+    <circle cx="1262" cy="58"  r="2.2" fill="rgba(255,255,255,0.70)"/>
+    <circle cx="722"  cy="82"  r="2.0" fill="rgba(255,255,255,0.65)"/>
+    <circle cx="422"  cy="142" r="2.3" fill="rgba(255,255,255,0.72)"/>
+    <circle cx="1048" cy="128" r="2.1" fill="rgba(255,255,255,0.68)"/>
   </svg>
-
-  <!-- Dark storm-cloud corner vignettes -->
-  <div class="hero-cloud-tl" aria-hidden="true"></div>
-  <div class="hero-cloud-tr" aria-hidden="true"></div>
-  <div class="hero-cloud-bl" aria-hidden="true"></div>
-  <div class="hero-cloud-br" aria-hidden="true"></div>
-
-  <!-- Slow smoke / mist layers -->
-  <div class="hero-smoke-1" aria-hidden="true"></div>
-  <div class="hero-smoke-2" aria-hidden="true"></div>
-  <div class="hero-smoke-3" aria-hidden="true"></div>
 
   <!-- Centred hero content -->
   <div class="hero-content">
@@ -161,49 +152,6 @@
       the space where ambition is the only light.
     </p>
     <a href="#collection" class="btn btn-outline void-born-cta">Enter the Void</a>
-  </div>
-</section>
-
-<!-- ================================================
-     MARQUEE STRIP
-     ================================================ -->
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-track">
-    <!-- Track repeated twice for seamless loop -->
-    <span class="marquee-item">saint void <span class="marquee-dot"></span></span>
-    <span class="marquee-item">limited drop 01 <span class="marquee-dot"></span></span>
-    <span class="marquee-item">darkness &amp; devotion <span class="marquee-dot"></span></span>
-    <span class="marquee-item">gothic streetwear <span class="marquee-dot"></span></span>
-    <span class="marquee-item">no restock <span class="marquee-dot"></span></span>
-    <span class="marquee-item">saint void <span class="marquee-dot"></span></span>
-    <span class="marquee-item">limited drop 01 <span class="marquee-dot"></span></span>
-    <span class="marquee-item">darkness &amp; devotion <span class="marquee-dot"></span></span>
-    <span class="marquee-item">gothic streetwear <span class="marquee-dot"></span></span>
-    <span class="marquee-item">no restock <span class="marquee-dot"></span></span>
-  </div>
-</div>
-
-<!-- ================================================
-     BRAND PILLARS
-     ================================================ -->
-<section class="pillars" id="foundation">
-  <div class="section-label fade-up" style="text-align:center;margin-bottom:clamp(2.5rem,5vw,4rem);letter-spacing:0.3em;">The Foundation</div>
-  <div class="pillars-inner">
-    <div class="pillar fade-up">
-      <div class="pillar-num">01</div>
-      <div class="pillar-title">Vision</div>
-      <p class="pillar-text">A dream born in silence, before anyone believes in it. The spark that refuses to die in the dark.</p>
-    </div>
-    <div class="pillar fade-up delay-2">
-      <div class="pillar-num">02</div>
-      <div class="pillar-title">Creation</div>
-      <p class="pillar-text">Turning pain, discipline and raw ambition into something tangible. Craft over comfort, always.</p>
-    </div>
-    <div class="pillar fade-up delay-3">
-      <div class="pillar-num">03</div>
-      <div class="pillar-title">Becoming</div>
-      <p class="pillar-text">Wearing the identity you are building. A uniform for those becoming who they are meant to be.</p>
-    </div>
   </div>
 </section>
 
@@ -793,22 +741,6 @@
       <a href="product-hoodie.html" class="btn btn-primary">Shop the Hoodie — €70</a>
       <a href="product-sweatpants.html" class="btn btn-outline">Shop the Sweatpants — €70</a>
     </div>
-  </div>
-</section>
-
-<!-- ================================================
-     NEWSLETTER
-     ================================================ -->
-<section class="newsletter">
-  <div class="newsletter-inner fade-up">
-    <div class="section-label" style="margin-bottom:0.75rem;">Stay Connected</div>
-    <h2 class="newsletter-title">Join the Void</h2>
-    <p class="newsletter-sub">Early access. Drop notifications. No noise.</p>
-    <form class="newsletter-form" onsubmit="return false;">
-      <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Email address" />
-      <button type="submit" class="newsletter-submit">Subscribe</button>
-    </form>
-    <p class="newsletter-note">By subscribing you agree to our Privacy Policy.</p>
   </div>
 </section>
 
