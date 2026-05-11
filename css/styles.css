@@ -335,161 +335,59 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
   background: #000;
 }
 
-/* Deep void background — bright open centre, darkness at every edge */
-.hero-bg {
+/* Real void image — fills hero, slow cinematic zoom */
+.hero-bg-img {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 52% 58% at 50% 44%, rgba(18,18,18,0.0) 0%, rgba(0,0,0,0.82) 52%, #000 100%),
-    radial-gradient(ellipse 85% 48% at 50% 0%,   rgba(4,4,4,0.98)  0%, transparent 55%),
-    radial-gradient(ellipse 85% 48% at 50% 100%, rgba(0,0,0,1)     0%, transparent 55%),
-    radial-gradient(ellipse 36% 92% at 0%   50%, rgba(0,0,0,0.98)  0%, transparent 50%),
-    radial-gradient(ellipse 36% 92% at 100% 50%, rgba(0,0,0,0.98)  0%, transparent 50%),
-    #000;
-}
-
-/* Star / dust field */
-.hero-stars {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Storm-cloud corner vignettes */
-.hero-cloud-tl,
-.hero-cloud-tr,
-.hero-cloud-bl,
-.hero-cloud-br {
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
+  inset: -6%;          /* extra margin so zoom never shows edges */
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  animation: heroZoom 22s ease-in-out infinite alternate;
   will-change: transform;
 }
 
-.hero-cloud-tl {
-  top: -5%; left: -5%;
-  width: 55%; height: 55%;
-  background: radial-gradient(ellipse 80% 70% at 10% 10%,
-    rgba(2,2,2,1) 0%, rgba(4,4,4,0.88) 35%, rgba(6,6,6,0.55) 56%, transparent 74%);
-  filter: blur(24px);
-  animation: cloudDrift 28s ease-in-out infinite;
+@keyframes heroZoom {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.07); }
 }
 
-.hero-cloud-tr {
-  top: -5%; right: -5%;
-  width: 55%; height: 55%;
-  background: radial-gradient(ellipse 80% 70% at 90% 10%,
-    rgba(2,2,2,1) 0%, rgba(4,4,4,0.88) 35%, rgba(6,6,6,0.55) 56%, transparent 74%);
-  filter: blur(24px);
-  animation: cloudDrift 34s ease-in-out infinite reverse;
-}
-
-.hero-cloud-bl {
-  bottom: -5%; left: -5%;
-  width: 60%; height: 55%;
-  background: radial-gradient(ellipse 80% 70% at 10% 90%,
-    rgba(0,0,0,1) 0%, rgba(3,3,3,0.94) 30%, rgba(5,5,5,0.62) 52%, transparent 72%);
-  filter: blur(30px);
-  animation: cloudDriftSlow 40s ease-in-out infinite;
-}
-
-.hero-cloud-br {
-  bottom: -5%; right: -5%;
-  width: 60%; height: 55%;
-  background: radial-gradient(ellipse 80% 70% at 90% 90%,
-    rgba(0,0,0,1) 0%, rgba(3,3,3,0.94) 30%, rgba(5,5,5,0.62) 52%, transparent 72%);
-  filter: blur(30px);
-  animation: cloudDriftSlow 36s ease-in-out infinite reverse;
-}
-
-/* Slow smoke / mist */
-.hero-smoke-1,
-.hero-smoke-2,
-.hero-smoke-3 {
+/* Dark overlay — minimal, lets the real void image breathe through */
+.hero-overlay {
   position: absolute;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
-.hero-smoke-1 {
-  bottom: 0; left: -25%;
-  width: 150%; height: 45%;
-  z-index: 3;
-  background: radial-gradient(ellipse 60% 60% at 30% 100%,
-    rgba(5,5,5,0.95) 0%, rgba(3,3,3,0.68) 38%, transparent 65%);
-  filter: blur(38px);
-  animation: smokeDriftL 32s ease-in-out infinite;
-}
-
-.hero-smoke-2 {
-  bottom: 0; right: -25%;
-  width: 150%; height: 42%;
-  z-index: 3;
-  background: radial-gradient(ellipse 60% 60% at 70% 100%,
-    rgba(5,5,5,0.90) 0%, rgba(3,3,3,0.64) 38%, transparent 65%);
-  filter: blur(44px);
-  animation: smokeDriftR 38s ease-in-out infinite;
-}
-
-.hero-smoke-3 {
-  bottom: 0; left: -12%;
-  width: 124%; height: 52%;
-  z-index: 3;
-  background: radial-gradient(ellipse 75% 52% at 50% 100%,
-    rgba(4,4,4,0.88) 0%, rgba(2,2,2,0.54) 42%, transparent 64%);
-  filter: blur(52px);
-  animation: smokeRise 46s ease-in-out infinite;
-}
-
-/* Cloud & smoke keyframes */
-@keyframes cloudDrift {
-  0%, 100% { transform: translate(0,    0)    scale(1);    }
-  33%       { transform: translate(18px, 12px) scale(1.03); }
-  66%       { transform: translate(-10px, 8px) scale(0.98); }
-}
-
-@keyframes cloudDriftSlow {
-  0%, 100% { transform: translate(0,     0)     scale(1);    opacity: 1;    }
-  40%       { transform: translate(-14px, -10px) scale(1.02); opacity: 0.92; }
-  75%       { transform: translate( 10px,  -6px) scale(0.97); opacity: 0.96; }
-}
-
-@keyframes smokeDriftL {
-  0%, 100% { transform: translateX(0)     scaleX(1);    opacity: 0.90; }
-  42%       { transform: translateX(-55px) scaleX(1.05); opacity: 1;    }
-  72%       { transform: translateX(-28px) scaleX(0.97); opacity: 0.85; }
-}
-
-@keyframes smokeDriftR {
-  0%, 100% { transform: translateX(0)    opacity: 0.85; }
-  45%       { transform: translateX(50px) scaleX(1.04); opacity: 0.95; }
-  75%       { transform: translateX(22px) scaleX(0.98); opacity: 0.90; }
-}
-
-@keyframes smokeRise {
-  0%, 100% { transform: translateY(0)     scaleY(1);    opacity: 0.88; }
-  50%       { transform: translateY(-20px) scaleY(1.04); opacity: 1;    }
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 50% 44% at 50% 46%,
+      rgba(0,0,0,0.35) 0%,
+      rgba(0,0,0,0.15) 38%,
+      rgba(0,0,0,0.06) 65%,
+      rgba(0,0,0,0.16) 100%);
 }
 
 /* Soft silver wordmark glow */
 @keyframes silverGlow {
   0%, 100% {
     text-shadow:
-      0 0 40px rgba(255,255,255,0.18),
-      0 0 100px rgba(255,255,255,0.08),
-      0 0 240px rgba(220,220,220,0.05),
-      0 2px 6px rgba(0,0,0,1);
+      0 0 40px  rgba(255,255,255,0.20),
+      0 0 100px rgba(255,255,255,0.10),
+      0 0 240px rgba(220,220,220,0.06),
+      0 2px 8px rgba(0,0,0,1);
   }
   50% {
     text-shadow:
-      0 0 65px rgba(255,255,255,0.30),
-      0 0 160px rgba(255,255,255,0.14),
-      0 0 380px rgba(220,220,220,0.08),
-      0 2px 6px rgba(0,0,0,1);
+      0 0 65px  rgba(255,255,255,0.32),
+      0 0 160px rgba(255,255,255,0.15),
+      0 0 380px rgba(220,220,220,0.09),
+      0 2px 8px rgba(0,0,0,1);
   }
+}
+
+/* Subtle vertical float on the wordmark */
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-9px); }
 }
 
 /* ================================================
@@ -587,7 +485,8 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
     0 0 100px rgba(255,255,255,0.08),
     0 0 240px rgba(220,220,220,0.05),
     0 2px 6px rgba(0,0,0,1);
-  animation: silverGlow 5s ease-in-out infinite;
+  animation: silverGlow 5s ease-in-out infinite,
+             logoFloat  7s ease-in-out infinite;
 }
 
 /* Primary tagline */
@@ -2647,14 +2546,8 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
    ACCESSIBILITY — REDUCED MOTION
    ================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .hero-brand       { animation: none !important; }
-  .hero-cloud-tl,
-  .hero-cloud-tr,
-  .hero-cloud-bl,
-  .hero-cloud-br    { animation: none !important; }
-  .hero-smoke-1,
-  .hero-smoke-2,
-  .hero-smoke-3     { animation: none !important; }
+  .hero-bg-img  { animation: none !important; }
+  .hero-brand   { animation: none !important; }
   .hero-content .fade-in {
     transition: none !important;
     opacity: 1 !important;
@@ -2693,6 +2586,295 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
 .cart-empty-sub {
   font-size: 0.82rem;
   color: var(--silver-dark);
+}
+
+/* ================================================
+   VOID ATMOSPHERE — SITE-WIDE ENHANCEMENTS
+   ================================================ */
+
+/* Fixed low-opacity void image behind every page */
+.void-page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+/* ── Hero stars — clearly visible over the image ── */
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  animation: starTwinkle 6s ease-in-out infinite;
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.75; }
+  50%       { opacity: 1;    }
+}
+
+/* ── Hero wordmark — stronger silver glow ── */
+.hero-brand {
+  text-shadow:
+    0 0  30px rgba(255,255,255,0.55),
+    0 0  70px rgba(255,255,255,0.28),
+    0 0 150px rgba(255,255,255,0.14),
+    0 0 320px rgba(220,220,220,0.08),
+    0 2px 8px rgba(0,0,0,1);
+  animation: silverGlow 5s ease-in-out infinite,
+             logoFloat  7s ease-in-out infinite;
+}
+
+/* ── Born in the Void — void image layer ── */
+.void-born {
+  border-top:    1px solid rgba(255,255,255,0.09);
+  border-bottom: 1px solid rgba(255,255,255,0.09);
+}
+.void-born::before {
+  background:
+    radial-gradient(ellipse 70% 70% at 50% 50%,
+      transparent 0%, rgba(0,0,0,0.72) 100%),
+    url('../images/hero-void.png') center / cover no-repeat;
+  opacity: 0.18;
+}
+.void-born-inner { position: relative; z-index: 2; }
+
+/* ── Collection section ── */
+#collection {
+  background: linear-gradient(to bottom, #000 0%, #040404 100%);
+  position: relative;
+}
+#collection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%,
+      rgba(255,255,255,0.02) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── Product cards — dark glass with silver edge ── */
+.product-card-visual {
+  background: #080808;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.product-card:hover .product-card-visual {
+  border-color: rgba(255,255,255,0.18);
+  box-shadow:
+    0 0  25px rgba(255,255,255,0.06),
+    0 0  60px rgba(255,255,255,0.03),
+    0 12px 50px rgba(0,0,0,0.7);
+}
+/* Silver top-edge shimmer on hover */
+.product-card-visual::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.40) 50%,
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  z-index: 4;
+}
+.product-card:hover .product-card-visual::after { opacity: 1; }
+
+/* ── Lookbook section ── */
+.lookbook {
+  background: #030303;
+  position: relative;
+  overflow: hidden;
+}
+.lookbook::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+.lookbook > * { position: relative; z-index: 1; }
+
+/* Silver border on lookbook frames */
+.lk-frame {
+  background: #060606;
+  outline: 1px solid rgba(255,255,255,0.05);
+}
+.lookbook-item:hover .lk-frame {
+  outline-color: rgba(255,255,255,0.12);
+}
+
+/* ── About section ── */
+.about { position: relative; overflow: hidden; }
+.about::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+.about > * { position: relative; z-index: 1; }
+
+/* ── Drop section ── */
+.drop { background: #020202; }
+.drop::before {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%,
+      rgba(100,100,100,0.04) 0%, transparent 70%),
+    url('../images/hero-void.png') center / cover no-repeat;
+  opacity: 0.12;
+}
+.drop > * { position: relative; z-index: 1; }
+
+/* ── Final CTA ── */
+.final-cta {
+  background: #010101;
+  border-top:    1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.final-cta::before {
+  background:
+    radial-gradient(ellipse 65% 70% at 50% 50%,
+      rgba(20,20,20,0.5) 0%, transparent 70%),
+    url('../images/hero-void.png') center / cover no-repeat;
+  opacity: 0.10;
+}
+.final-cta-inner { position: relative; z-index: 1; }
+
+/* Stronger glow on final CTA title */
+.final-cta-title {
+  text-shadow:
+    0 0 50px rgba(255,255,255,0.18),
+    0 0 120px rgba(255,255,255,0.08),
+    0 2px 6px rgba(0,0,0,0.95);
+}
+
+/* ── Footer ── */
+.footer {
+  background: #020202;
+  border-top: 1px solid rgba(255,255,255,0.09);
+  position: relative; overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center bottom;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+.footer > * { position: relative; z-index: 1; }
+
+/* ── Brand stats bar ── */
+.brand-stats {
+  background: #010101;
+  border-top:    1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.stat-num, .stat-icon {
+  text-shadow: 0 0 20px rgba(255,255,255,0.15);
+}
+
+/* ── Navigation — subtle scroll effect ── */
+.nav {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav.scrolled {
+  background: rgba(0,0,0,0.92) !important;
+  backdrop-filter: blur(14px);
+  border-bottom-color: rgba(255,255,255,0.07);
+}
+
+/* ── Marquee strip ── */
+.marquee-strip {
+  border-top:    1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: #010101;
+}
+
+/* ── Section divider lines — silver accent ── */
+.section-line {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.12) 30%,
+    rgba(255,255,255,0.12) 70%,
+    transparent);
+}
+
+/* ── Buttons — stronger silver glow on primary ── */
+.btn-primary {
+  box-shadow: 0 0 0 0 transparent;
+  transition: background var(--fast) var(--ease),
+              box-shadow var(--fast) var(--ease),
+              transform var(--fast) var(--ease);
+}
+.btn-primary:hover {
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.20),
+    0 0 50px rgba(255,255,255,0.08);
+}
+
+/* ── Product page void atmosphere ── */
+.product-page {
+  background: #000;
+  position: relative;
+}
+.product-page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* ── Cart page void atmosphere ── */
+.cart-page { background: #000; }
+
+/* ── Checkout page void atmosphere ── */
+.checkout-page { background: #000; }
+
+/* ── Countdown numbers — silver glow ── */
+.countdown-value {
+  text-shadow: 0 0 30px rgba(255,255,255,0.12);
+}
+
+/* ── Size buttons — void glass style ── */
+.size-btn {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.10);
+}
+.size-btn:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: 0 0 12px rgba(255,255,255,0.08);
 }
 
 /* ================================================
@@ -2853,4 +3035,605 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
   .stat-item {
     flex: 1 1 100%;
   }
+}
+
+/* ================================================
+   VOID UNIVERSE — DARK ATMOSPHERE SYSTEM v3
+   One unified visual world across every page.
+   ================================================ */
+
+/* ── ANIMATIONS ── */
+@keyframes voidDrift {
+  0%   { transform: scale(1)    translateY(0px);   }
+  50%  { transform: scale(1.05) translateY(-14px); }
+  100% { transform: scale(1)    translateY(0px);   }
+}
+@keyframes smokePulse {
+  0%, 100% { opacity: var(--smoke-base, 0.28); }
+  50%       { opacity: var(--smoke-peak, 0.40); }
+}
+@keyframes topFadePulse {
+  0%, 100% { opacity: 0.38; }
+  50%       { opacity: 0.48; }
+}
+
+/* ══ 1. GLOBAL VOID BACKGROUND ══
+   Cloud image + star dust in one fixed layer.
+   Foundation of every page. */
+.void-page-bg {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.72) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.52) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.38) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.28) 1px, transparent 1px),
+    url('../images/hero-void.png') !important;
+  background-size:
+    270px 270px,
+    410px 410px,
+    185px 185px,
+    335px 335px,
+    cover !important;
+  background-position:
+    0px 0px,
+    135px 88px,
+    78px 175px,
+    218px 42px,
+    center center !important;
+  background-repeat: repeat, repeat, repeat, repeat, no-repeat !important;
+  opacity: 0.38 !important;
+  animation: voidDrift 32s ease-in-out infinite !important;
+}
+
+/* ══ 2. HERO — bottom fog into sections ══ */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 110%;
+  height: 32%;
+  z-index: 4;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 100%,
+    rgba(0,0,0,0.94) 0%,
+    rgba(0,0,0,0.58) 45%,
+    transparent 72%
+  );
+  filter: blur(14px);
+}
+
+/* ══ 3. SECTION BACKGROUNDS — translucent ══
+   Low alpha lets the fixed void+star layer bleed through.
+   Still dark enough to keep text clear. */
+#collection        { background: rgba(0,0,0,0.65) !important; }
+.void-born         { background: rgba(2,2,2,0.68) !important; }
+.lookbook          { background: rgba(3,3,3,0.66) !important; }
+.about             { background: rgba(0,0,0,0.65) !important; }
+.drop              { background: rgba(2,2,2,0.68) !important; }
+.brand-stats       { background: rgba(0,0,0,0.70) !important; }
+.marquee-strip     { background: rgba(0,0,0,0.72) !important; }
+.footer            { background: rgba(2,2,2,0.72) !important; }
+.final-cta         { background: rgba(1,1,1,0.68) !important; }
+.pillars           { background: rgba(1,1,1,0.68) !important; }
+.related           { background: rgba(1,1,1,0.68) !important; }
+
+/* ══ 4. PRODUCT / CART / CHECKOUT PAGES ══
+   Atmospheric void top-fade via ::before — same cinematic
+   energy as the homepage hero, adapted for inner pages. */
+.product-page,
+.cart-page,
+.checkout-page { position: relative; }
+
+.product-page  { background: rgba(0,0,0,0.65) !important; }
+.cart-page     { background: rgba(0,0,0,0.65) !important; }
+.checkout-page { background: rgba(0,0,0,0.65) !important; }
+
+.product-page::before,
+.cart-page::before,
+.checkout-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(260px, 48vh, 560px);
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0.42;
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,1.0) 0%,
+    rgba(0,0,0,0.65) 45%,
+    rgba(0,0,0,0.15) 78%,
+    transparent 100%);
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,1.0) 0%,
+    rgba(0,0,0,0.65) 45%,
+    rgba(0,0,0,0.15) 78%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+  animation: topFadePulse 22s ease-in-out infinite;
+}
+
+/* Ensure page layout children sit above the atmospheric top fade */
+.product-layout,
+.cart-header,
+.cart-layout,
+.checkout-layout { position: relative; z-index: 1; }
+
+/* ══ 5. SECTION VOID TEXTURE OVERLAYS ══
+   Each section has its own cloud texture layer
+   breathing with smokePulse at its own rhythm. */
+.void-born::before {
+  opacity: 0.44 !important;
+  animation: smokePulse 11s ease-in-out infinite !important;
+  --smoke-base: 0.40; --smoke-peak: 0.50;
+}
+.lookbook::before {
+  opacity: 0.34 !important;
+  animation: smokePulse 15s ease-in-out infinite !important;
+  --smoke-base: 0.30; --smoke-peak: 0.40;
+}
+.about::after {
+  opacity: 0.30 !important;
+  animation: smokePulse 17s ease-in-out infinite !important;
+  --smoke-base: 0.26; --smoke-peak: 0.36;
+}
+.drop::before {
+  opacity: 0.40 !important;
+  animation: smokePulse 13s ease-in-out infinite !important;
+  --smoke-base: 0.34; --smoke-peak: 0.46;
+}
+.final-cta::before {
+  opacity: 0.42 !important;
+  animation: smokePulse 12s ease-in-out infinite !important;
+  --smoke-base: 0.36; --smoke-peak: 0.50;
+}
+.footer::before {
+  opacity: 0.30 !important;
+  animation: smokePulse 19s ease-in-out infinite !important;
+  --smoke-base: 0.26; --smoke-peak: 0.36;
+}
+
+/* ══ 6. SECTION SILVER SEPARATORS ══ */
+.void-born,
+.lookbook,
+.about,
+.drop,
+.final-cta,
+.pillars,
+#collection {
+  border-top:    1px solid rgba(255,255,255,0.08) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* ══ 7. PRODUCT CARDS ══ */
+.product-card-visual {
+  background: rgba(5,5,5,0.88) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 6px 35px rgba(0,0,0,0.65) !important;
+}
+.product-card:hover .product-card-visual {
+  border-color: rgba(255,255,255,0.24) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.09),
+    0 0 35px rgba(255,255,255,0.08),
+    0 0 80px rgba(255,255,255,0.03),
+    0 18px 60px rgba(0,0,0,0.80) !important;
+}
+.product-card:hover .product-card-visual::after { opacity: 1 !important; }
+
+/* ══ 8. PRODUCT PAGE — gallery + info ══ */
+/* Remove the old product-page::after fixed overlay — ::before now handles it */
+.product-page::after { display: none !important; }
+
+.product-gallery {
+  background: rgba(3,3,3,0.68) !important;
+  border-right: 1px solid rgba(255,255,255,0.07) !important;
+  position: relative;
+  overflow: hidden;
+}
+.product-gallery::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center left;
+  opacity: 0.28 !important;
+  pointer-events: none;
+  z-index: 0;
+  animation: smokePulse 17s ease-in-out infinite;
+  --smoke-base: 0.24; --smoke-peak: 0.34;
+}
+.product-gallery > * { position: relative; z-index: 1; }
+
+.gallery-main {
+  background: rgba(4,4,4,0.90) !important;
+  border: 1px solid rgba(255,255,255,0.09) !important;
+  box-shadow:
+    0 0 55px rgba(0,0,0,0.70),
+    inset 0 0 30px rgba(255,255,255,0.025) !important;
+}
+.gallery-thumb {
+  background: rgba(5,5,5,0.88) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+}
+.gallery-thumb.active {
+  border-color: rgba(255,255,255,0.28) !important;
+  box-shadow: 0 0 16px rgba(255,255,255,0.10) !important;
+}
+.gallery-thumb:hover { border-color: rgba(255,255,255,0.16) !important; }
+
+.product-info {
+  background: rgba(2,2,2,0.66) !important;
+  position: relative;
+  overflow: hidden;
+}
+.product-info::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: right center;
+  opacity: 0.22 !important;
+  pointer-events: none;
+  z-index: 0;
+  animation: smokePulse 21s ease-in-out infinite;
+  --smoke-base: 0.18; --smoke-peak: 0.28;
+}
+.product-info > * { position: relative; z-index: 1; }
+
+/* ══ 9. RELATED PRODUCTS ══ */
+.related {
+  border-top: 1px solid rgba(255,255,255,0.08) !important;
+  position: relative;
+  overflow: hidden;
+}
+.related::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.24 !important;
+  pointer-events: none;
+  animation: smokePulse 19s ease-in-out infinite;
+  --smoke-base: 0.20; --smoke-peak: 0.30;
+}
+.related > * { position: relative; z-index: 1; }
+
+/* ══ 10. BRAND PILLARS ══ */
+.pillars {
+  position: relative;
+  overflow: hidden;
+}
+.pillars::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.24 !important;
+  pointer-events: none;
+  animation: smokePulse 15s ease-in-out infinite;
+  --smoke-base: 0.20; --smoke-peak: 0.30;
+}
+.pillars > * { position: relative; z-index: 1; }
+
+/* ══ 11. CART PAGE ══ */
+.cart-header {
+  border-bottom: 1px solid rgba(255,255,255,0.09) !important;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+.cart-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center 40%;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+.cart-header > * { position: relative; z-index: 1; }
+
+.cart-title {
+  text-shadow:
+    0 0 40px rgba(255,255,255,0.18),
+    0 0 100px rgba(255,255,255,0.08) !important;
+}
+
+.cart-item {
+  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  background: rgba(3,3,3,0.62) !important;
+  backdrop-filter: blur(4px) !important;
+}
+.cart-item-img {
+  background: rgba(6,6,6,0.90) !important;
+  border: 1px solid rgba(255,255,255,0.09) !important;
+  overflow: hidden;
+  position: relative;
+}
+.cart-item-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 18%,
+    rgba(160,160,160,0.07) 0%,
+    transparent 68%
+  );
+  pointer-events: none;
+}
+.cart-summary {
+  background: rgba(4,4,4,0.80) !important;
+  border: 1px solid rgba(255,255,255,0.13) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    inset 0 0 80px rgba(255,255,255,0.02),
+    0 0 60px rgba(0,0,0,0.55) !important;
+  backdrop-filter: blur(14px) !important;
+  position: relative;
+  overflow: hidden;
+}
+.cart-summary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: center right;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+  animation: smokePulse 17s ease-in-out infinite;
+  --smoke-base: 0.18; --smoke-peak: 0.28;
+}
+.cart-summary > * { position: relative; z-index: 1; }
+.cart-summary-title {
+  border-bottom: 1px solid rgba(255,255,255,0.09) !important;
+  text-shadow: 0 0 30px rgba(255,255,255,0.16);
+}
+.cart-summary-line { border-bottom: 1px solid rgba(255,255,255,0.05) !important; }
+.cart-qty          { border: 1px solid rgba(255,255,255,0.11) !important; }
+.cart-qty-num      { border-color: rgba(255,255,255,0.08) !important; }
+
+/* ══ 12. CHECKOUT PAGE ══ */
+.checkout-form-col {
+  background: rgba(2,2,2,0.65) !important;
+  border-right: 1px solid rgba(255,255,255,0.08) !important;
+  position: relative;
+  overflow: hidden;
+}
+.checkout-form-col::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: left center;
+  opacity: 0.22 !important;
+  pointer-events: none;
+  z-index: 0;
+  animation: smokePulse 21s ease-in-out infinite;
+  --smoke-base: 0.18; --smoke-peak: 0.28;
+}
+.checkout-form-col > * { position: relative; z-index: 1; }
+
+.checkout-summary-col {
+  background: rgba(3,3,3,0.72) !important;
+  position: relative;
+  overflow: hidden;
+}
+.checkout-summary-col::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-void.png');
+  background-size: cover;
+  background-position: right center;
+  opacity: 0.34 !important;
+  pointer-events: none;
+  z-index: 0;
+  animation: smokePulse 15s ease-in-out infinite;
+  --smoke-base: 0.28; --smoke-peak: 0.42;
+}
+.checkout-summary-col > * { position: relative; z-index: 1; }
+.checkout-section-title {
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  letter-spacing: 0.22em;
+}
+.checkout-step-sep { background: rgba(255,255,255,0.07) !important; }
+.checkout-step-num { border-color: rgba(255,255,255,0.12) !important; }
+
+/* ══ 13. FORM INPUTS ══ */
+.form-input {
+  background: rgba(3,3,3,0.95) !important;
+  border-color: rgba(255,255,255,0.11) !important;
+  color: var(--white) !important;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease) !important;
+}
+.form-input:focus {
+  border-color: rgba(255,255,255,0.30) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 0 22px rgba(255,255,255,0.05) !important;
+  outline: none !important;
+}
+.form-input::placeholder { color: rgba(95,95,95,0.85) !important; }
+.form-select {
+  background: rgba(3,3,3,0.95) !important;
+  border-color: rgba(255,255,255,0.11) !important;
+  color: var(--white) !important;
+}
+.form-select:focus {
+  border-color: rgba(255,255,255,0.30) !important;
+  outline: none !important;
+}
+
+/* ══ 14. FOOTER ══ */
+.footer::before {
+  opacity: 0.30 !important;
+  animation: smokePulse 21s ease-in-out infinite !important;
+  --smoke-base: 0.26; --smoke-peak: 0.36;
+}
+.footer-brand {
+  text-shadow:
+    0 0 38px rgba(255,255,255,0.22),
+    0 0 95px rgba(255,255,255,0.10);
+}
+.footer-links a     { color: rgba(110,110,110,0.92) !important; }
+.footer-links a:hover { color: rgba(215,215,215,0.96) !important; }
+.footer-bottom      { border-top: 1px solid rgba(255,255,255,0.08) !important; }
+
+/* ══ 15. NAV — glass void ══ */
+.nav {
+  background: rgba(0,0,0,0.58) !important;
+  backdrop-filter: blur(22px) !important;
+  -webkit-backdrop-filter: blur(22px) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+.nav.scrolled { background: rgba(0,0,0,0.82) !important; }
+
+/* ══ 16. ABOUT VISUAL ══ */
+.about-visual {
+  background: rgba(5,5,5,0.80) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  box-shadow:
+    inset 0 0 70px rgba(0,0,0,0.55),
+    0 0 90px rgba(0,0,0,0.65) !important;
+}
+
+/* ══ 17. LOOKBOOK FRAMES ══ */
+.lk-frame {
+  background: rgba(4,4,4,0.82) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+}
+.lookbook-item:hover .lk-frame {
+  border-color: rgba(255,255,255,0.19) !important;
+  box-shadow: 0 0 38px rgba(255,255,255,0.06) !important;
+}
+
+/* ══ 18. SECTION LABELS ══ */
+.section-label {
+  color: rgba(168,168,168,0.90) !important;
+  letter-spacing: 0.3em !important;
+}
+
+/* ══ 19. KEY HEADINGS — silver atmospheric glow ══ */
+.product-name {
+  text-shadow:
+    0 0 45px rgba(255,255,255,0.18),
+    0 0 100px rgba(255,255,255,0.08) !important;
+}
+.checkout-logo {
+  text-shadow:
+    0 0 30px rgba(255,255,255,0.20),
+    0 0 70px rgba(255,255,255,0.09) !important;
+}
+.section-title {
+  text-shadow:
+    0 0 35px rgba(255,255,255,0.12),
+    0 0 80px rgba(255,255,255,0.06) !important;
+}
+
+/* ══ 20. COUNTDOWN ══ */
+.countdown-value {
+  color: var(--pure) !important;
+  text-shadow:
+    0 0 30px rgba(255,255,255,0.26),
+    0 0 75px rgba(255,255,255,0.13) !important;
+}
+.countdown-sep   { color: rgba(255,255,255,0.24) !important; }
+.countdown-label { color: rgba(118,118,118,0.92) !important; }
+
+/* ══ 21. BRAND STATS ══ */
+.stat-num, .stat-icon {
+  text-shadow: 0 0 30px rgba(255,255,255,0.24) !important;
+}
+.stat-label     { color: rgba(118,118,118,0.86) !important; }
+.brand-stats {
+  border-top:    1px solid rgba(255,255,255,0.06) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* ══ 22. MARQUEE STRIP ══ */
+.marquee-strip {
+  border-top:    1px solid rgba(255,255,255,0.06) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* ══ 23. ACCORDION ITEMS ══ */
+.accordion-item {
+  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  background: rgba(2,2,2,0.60) !important;
+}
+.accordion-trigger {
+  background: transparent !important;
+}
+.accordion-trigger:hover {
+  color: rgba(255,255,255,0.95) !important;
+}
+.accordion-body {
+  background: rgba(2,2,2,0.50) !important;
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+/* ══ 24. SIZE BUTTONS ══ */
+.size-btn,
+.product-size-btn {
+  background: rgba(3,3,3,0.82) !important;
+  border-color: rgba(255,255,255,0.11) !important;
+}
+.size-btn:hover,
+.product-size-btn:hover {
+  border-color: rgba(255,255,255,0.26) !important;
+  box-shadow: 0 0 16px rgba(255,255,255,0.09) !important;
+}
+.size-btn.active,
+.product-size-btn.active {
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(255,255,255,0.32) !important;
+  box-shadow: 0 0 22px rgba(255,255,255,0.12) !important;
+}
+
+/* ══ 25. QTY CONTROLS ══ */
+.qty-control {
+  background: rgba(3,3,3,0.82) !important;
+  border: 1px solid rgba(255,255,255,0.11) !important;
+}
+.qty-btn {
+  color: rgba(180,180,180,0.90) !important;
+}
+.qty-btn:hover { color: rgba(255,255,255,1) !important; }
+
+/* ══ 26. HERO SCROLL INDICATOR ══ */
+.hero-scroll { color: rgba(200,200,200,0.72); }
+
+/* ══ 27. SCROLL LINE ══ */
+.scroll-line { background: rgba(200,200,200,0.35) !important; }
+
+/* ══ 28. REDUCED MOTION ══ */
+@media (prefers-reduced-motion: reduce) {
+  .hero::after { display: none; }
+  .void-page-bg { animation: none !important; }
+  .void-born::before, .lookbook::before, .about::after,
+  .drop::before, .final-cta::before, .footer::before,
+  .product-gallery::before, .product-info::before,
+  .related::before, .pillars::before,
+  .cart-summary::before, .cart-header::after,
+  .checkout-form-col::before, .checkout-summary-col::before,
+  .product-page::before, .cart-page::before,
+  .checkout-page::before { animation: none !important; }
 }
