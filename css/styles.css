@@ -3636,4 +3636,246 @@ h1, h2, h3, h4 { font-family: var(--heading); font-weight: 700; letter-spacing: 
   .checkout-form-col::before, .checkout-summary-col::before,
   .product-page::before, .cart-page::before,
   .checkout-page::before { animation: none !important; }
+  .hero-brand { animation: none !important; transform: scaleX(0.80) !important; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   SAINT VOID — WORDMARK TYPOGRAPHY SYSTEM v5
+   Font: Cinzel 700 — tall narrow Roman serif, refined & elegant
+   Direction: luxury fashion editorial, smooth, clean, premium
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── HERO WORDMARK — REFINED SYSTEM v5 ────────────────────────────
+   Soft entrance · gentle float · subtle glow breathe · silk shimmer
+   ─────────────────────────────────────────────────────────────── */
+
+/* 1. Word rise — smooth lift from slight blur, unhurried */
+@keyframes wmWordRise {
+  0%   { opacity: 0; transform: translateY(22px) scaleX(0.88); filter: blur(6px); }
+  60%  {                                                         filter: blur(0px); }
+  100% { opacity: 1; transform: translateY(0px)  scaleX(0.88); filter: blur(0px); }
+}
+
+/* 2. Ambient float — barely perceptible, like breathing */
+@keyframes svHeroFloat {
+  0%,  100% { transform: translateY(0px); }
+  50%        { transform: translateY(-6px); }
+}
+
+/* 3. Glow breathe — barely-there silver pulse, never aggressive */
+@keyframes svWordmarkShimmer {
+  0%, 100% {
+    text-shadow:
+      0  2px 12px  rgba(0,0,0,0.90),
+      0  6px 32px  rgba(0,0,0,0.75),
+      0 16px 80px  rgba(0,0,0,0.50),
+      0  0   10px  rgba(248,244,236,0.10),
+      0  0   30px  rgba(240,235,224,0.05);
+  }
+  50% {
+    text-shadow:
+      0  2px 12px  rgba(0,0,0,0.90),
+      0  6px 32px  rgba(0,0,0,0.75),
+      0 16px 80px  rgba(0,0,0,0.50),
+      0  0   14px  rgba(252,248,240,0.18),
+      0  0   44px  rgba(244,239,228,0.09),
+      0  0  100px  rgba(232,226,214,0.04);
+  }
+}
+
+/* 4. Glow orb — very faint atmospheric warmth only */
+@keyframes glowOrbPulse {
+  0%, 100% { opacity: 0.40; transform: translate(-50%, -50%) scale(1.00); }
+  50%       { opacity: 0.70; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+/* 5. Silk shimmer — whisper-thin light ray, infrequent */
+@keyframes shimmerSweep {
+  0%   { left: -130%; opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { left:  160%; opacity: 0; }
+}
+
+/* ── WRAPPER ──────────────────────────────────────────────────── */
+.hero-wordmark-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2.2rem;
+}
+
+/* Atmospheric warmth — barely perceptible, removes harshness */
+.hero-wordmark-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:  180%;
+  height: 380%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,252,244,0.045) 0%,
+    rgba(240,236,226,0.020) 30%,
+    transparent             60%
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: glowOrbPulse 7s ease-in-out infinite;
+}
+
+/* ── HERO BRAND ───────────────────────────────────────────────── */
+.hero-brand {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700 !important;           /* 700 = refined strokes, not heavy */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.06em !important;                /* gentle breathing room between words */
+
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+
+  /* Slightly softer warm white — elegant, not stark */
+  color: rgba(244, 240, 232, 0.94) !important;
+  -webkit-text-fill-color: rgba(244, 240, 232, 0.94) !important;
+
+  font-size: clamp(3.2rem, 9vw, 9.5rem) !important;
+  letter-spacing: 0.34em !important;    /* wider tracking = more air = more luxury */
+  line-height: 0.90 !important;
+  text-transform: uppercase !important;
+
+  animation:
+    svHeroFloat       14s ease-in-out infinite 2.2s,
+    svWordmarkShimmer  8s ease-in-out infinite 2.2s !important;
+
+  /* Soft letter-contour halo — very subtle, not glowing */
+  filter:
+    drop-shadow(0 0  5px rgba(248,244,236,0.10))
+    drop-shadow(0 0 18px rgba(236,230,218,0.06)) !important;
+
+  margin-bottom: 0 !important;
+}
+
+/* Silk shimmer — whisper thin, almost subliminal */
+.hero-brand::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -130%;
+  width: 48%;
+  height: 120%;
+  background: linear-gradient(
+    112deg,
+    transparent               0%,
+    rgba(255,255,255,0.018)  38%,
+    rgba(255,255,255,0.040)  50%,
+    rgba(255,255,255,0.018)  62%,
+    transparent              100%
+  );
+  animation: shimmerSweep 14s ease-in-out infinite 5s;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── INDIVIDUAL WORD SPANS ────────────────────────────────────── */
+.wm-w {
+  display: block;
+  opacity: 0;
+  transform: translateY(22px) scaleX(0.88);
+  filter: blur(6px);
+  animation: wmWordRise 1.6s cubic-bezier(0.16, 1, 0.30, 1) forwards !important;
+}
+.wm-delay-1 { animation-delay: 0.20s !important; }
+.wm-delay-2 { animation-delay: 0.60s !important; }
+
+/* ── RESPONSIVE SIZING ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-brand { font-size: clamp(3rem, 10vw, 6.5rem) !important; letter-spacing: 0.28em !important; }
+}
+@media (max-width: 768px) {
+  .hero-brand { font-size: clamp(2.8rem, 12vw, 5.5rem) !important; letter-spacing: 0.22em !important; gap: 0.05em !important; }
+  .hero-wordmark-wrap { margin-bottom: 1.6rem !important; }
+}
+@media (max-width: 480px) {
+  .hero-brand { font-size: clamp(2.4rem, 14vw, 4rem) !important; letter-spacing: 0.16em !important; }
+}
+
+/* Bloom ghost — very faint depth layer, not a glow explosion */
+.wm-w::before {
+  content: attr(data-word);
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  text-align: center;
+  color: rgba(248, 244, 236, 0.07);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1;
+  text-transform: uppercase;
+  letter-spacing: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+}
+.wm-w { position: relative; }
+
+/* ── NAVIGATION LOGO ──────────────────────────────────────────── */
+.nav-logo {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700 !important;
+  display: inline-block !important;
+  transform: scaleX(0.88) !important;
+  transform-origin: left center !important;
+
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+
+  /* Bright, crisp — readable at nav size */
+  color: rgba(238, 234, 227, 0.96) !important;
+  -webkit-text-fill-color: rgba(238, 234, 227, 0.96) !important;
+
+  letter-spacing: 0.20em !important;
+
+  text-shadow:
+    0 1px 5px  rgba(0,0,0,0.96),
+    0 3px 14px rgba(0,0,0,0.80),
+    0 0  16px  rgba(228,222,212,0.07) !important;
+
+  filter: none !important;
+  transition: opacity var(--fast) var(--ease) !important;
+}
+.nav-logo:hover { opacity: 0.72 !important; }
+
+/* ── FOOTER BRAND LOGO ────────────────────────────────────────── */
+.footer-brand {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700 !important;
+  display: inline-block !important;
+  transform: scaleX(0.88) !important;
+  transform-origin: left center !important;
+
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+
+  /* Slightly softer than nav — appropriate footer hierarchy */
+  color: rgba(228, 224, 217, 0.92) !important;
+  -webkit-text-fill-color: rgba(228, 224, 217, 0.92) !important;
+
+  letter-spacing: 0.20em !important;
+
+  text-shadow:
+    0 1px 5px  rgba(0,0,0,0.96),
+    0 3px 14px rgba(0,0,0,0.80),
+    0 0  16px  rgba(218,212,202,0.05) !important;
+
+  filter: none !important;
 }
